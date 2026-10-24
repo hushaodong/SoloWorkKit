@@ -1,0 +1,32 @@
+[
+  {
+    "tool": "tileaudit",
+    "js_errors": [],
+    "width": 390,
+    "functional_test": "pass"
+  },
+  {
+    "tool": "dilutiondeck",
+    "js_errors": [],
+    "width": 390,
+    "functional_test": "pass"
+  },
+  {
+    "tool": "printfit",
+    "js_errors": [],
+    "width": 390,
+    "functional_test": "pass"
+  },
+  {
+    "tool": "prorateclear",
+    "js_errors": [],
+    "width": 390,
+    "functional_test": "pass"
+  },
+  {
+    "tool": "retainerpulse",
+    "js_errors": [],
+    "width": 390,
+    "functional_test": "pass"
+  }
+]

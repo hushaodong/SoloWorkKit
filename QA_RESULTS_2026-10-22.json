@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-22",
+  "results": {
+    "concreteyield": {
+      "mobile_390px": "pass",
+      "core_interaction": "pass",
+      "js_runtime": "pass",
+      "draft_noindex": "pass",
+      "ads_disabled": "pass"
+    },
+    "photovaultplan": {
+      "mobile_390px": "pass",
+      "core_interaction": "pass",
+      "js_runtime": "pass",
+      "draft_noindex": "pass",
+      "ads_disabled": "pass"
+    },
+    "reserveready": {
+      "mobile_390px": "pass",
+      "core_interaction": "pass",
+      "js_runtime": "pass",
+      "draft_noindex": "pass",
+      "ads_disabled": "pass"
+    },
+    "marginwatch": {
+      "mobile_390px": "pass",
+      "core_interaction": "pass",
+      "js_runtime": "pass",
+      "draft_noindex": "pass",
+      "ads_disabled": "pass"
+    },
+    "travelbuffer": {
+      "mobile_390px": "pass",
+      "core_interaction": "pass",
+      "js_runtime": "pass",
+      "draft_noindex": "pass",
+      "ads_disabled": "pass"
+    }
+  },
+  "total_existing": 25,
+  "public_deploy_test": "not run: no public host"
+}

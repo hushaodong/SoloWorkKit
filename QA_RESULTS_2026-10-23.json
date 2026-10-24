@@ -1,0 +1,32 @@
+{
+  "metersplit": {
+    "status": "pass",
+    "mobile_390px": "no_horizontal_overflow",
+    "page_js_errors": [],
+    "tested_origin": "set_content only; HTTP localhost blocked by sandbox"
+  },
+  "clientrename": {
+    "status": "pass",
+    "mobile_390px": "no_horizontal_overflow",
+    "page_js_errors": [],
+    "tested_origin": "set_content only; HTTP localhost blocked by sandbox"
+  },
+  "visitfloor": {
+    "status": "pass",
+    "mobile_390px": "no_horizontal_overflow",
+    "page_js_errors": [],
+    "tested_origin": "set_content only; HTTP localhost blocked by sandbox"
+  },
+  "rushquote": {
+    "status": "pass",
+    "mobile_390px": "no_horizontal_overflow",
+    "page_js_errors": [],
+    "tested_origin": "set_content only; HTTP localhost blocked by sandbox"
+  },
+  "warrantynest": {
+    "status": "pass",
+    "mobile_390px": "no_horizontal_overflow",
+    "page_js_errors": [],
+    "tested_origin": "set_content only; HTTP localhost blocked by sandbox"
+  }
+}

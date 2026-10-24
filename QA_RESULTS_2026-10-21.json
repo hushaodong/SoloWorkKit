@@ -1,0 +1,35 @@
+{
+  "tested_tools": [
+    {
+      "slug": "drywallwise",
+      "mobile_390px": true,
+      "interactive_flow": "pass",
+      "page_errors": []
+    },
+    {
+      "slug": "vendorboard",
+      "mobile_390px": true,
+      "interactive_flow": "pass",
+      "page_errors": []
+    },
+    {
+      "slug": "scopelock",
+      "mobile_390px": true,
+      "interactive_flow": "pass",
+      "page_errors": []
+    },
+    {
+      "slug": "proofsheet",
+      "mobile_390px": true,
+      "interactive_flow": "pass",
+      "page_errors": []
+    },
+    {
+      "slug": "leasetick",
+      "mobile_390px": true,
+      "interactive_flow": "pass",
+      "page_errors": []
+    }
+  ],
+  "total": 5
+}

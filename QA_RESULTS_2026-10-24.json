@@ -1,0 +1,46 @@
+{
+  "checks": [
+    {
+      "slug": "fencebid",
+      "title": "Fence Installation Estimate Calculator with Gates | Worklane Tools",
+      "mobile_width": 390,
+      "javascript_errors": [],
+      "horizontal_overflow": false,
+      "download": "PASS"
+    },
+    {
+      "slug": "mulchcompare",
+      "title": "Bulk Mulch vs Bags Cost Calculator for Multiple Beds | Worklane Tools",
+      "mobile_width": 390,
+      "javascript_errors": [],
+      "horizontal_overflow": false,
+      "download": "PASS"
+    },
+    {
+      "slug": "weddingflow",
+      "title": "Wedding Photography Timeline Planner with Coverage Check | Worklane Tools",
+      "mobile_width": 390,
+      "javascript_errors": [],
+      "horizontal_overflow": false,
+      "download": "PASS"
+    },
+    {
+      "slug": "turnoverbudget",
+      "title": "Rental Turnover Cost and Vacancy Loss Calculator | Worklane Tools",
+      "mobile_width": 390,
+      "javascript_errors": [],
+      "horizontal_overflow": false,
+      "download": "PASS"
+    },
+    {
+      "slug": "feenet",
+      "title": "Credit Card Processing Fee and Net Revenue Calculator | Worklane Tools",
+      "mobile_width": 390,
+      "javascript_errors": [],
+      "horizontal_overflow": false,
+      "download": "PASS"
+    }
+  ],
+  "note": "Chromium page.set_content() smoke tests, not live HTTPS/Safari",
+  "math_examples": "PASS: fence $5,163.40, mulch bags $115.50, turnover planned $1,850.00, merchant net $9,640.00"
+}
