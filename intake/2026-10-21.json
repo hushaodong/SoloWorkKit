@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-21",
+  "needs": [
+    {
+      "slug": "drywallwise",
+      "problem": "contractor drywall panel sheet takeoff estimating wall ceiling square footage door window openings and overage",
+      "audience": "contractors",
+      "evidence_url": "https://www.reddit.com/r/drywall/comments/1jtuuq1",
+      "evidence_date": "2025-04-07",
+      "jtbd": "Calculate sheet order across rooms and avoid disputes caused by inconsistent drywall quantities.",
+      "competitor": "Houzz Pro",
+      "seo_primary": "drywall sheet calculator by room",
+      "seo_longtail": [
+        "drywall sheets per room calculator",
+        "drywall 4x12 sheet estimate with doors windows"
+      ],
+      "monetization_hypothesis": "Free ad-supported core; possible paid export/preset functionality only after demand and billing validation.",
+      "score": 79,
+      "ad_fit": "Medium-high: trade supplier ads; construction software",
+      "technical_risk": "Low-medium: formula clear; not a cutting optimizer",
+      "differentiation": "Estimate the whole-sheet quantity from room dimensions; export for review."
+    },
+    {
+      "slug": "vendorboard",
+      "problem": "landlord vendor repair assignment status property contact project tracking across multiple rental units",
+      "audience": "landlords",
+      "evidence_url": "https://www.reddit.com/r/Landlord/comments/1str9de/landlordus_keeping_track_of_vendors_handy_men/",
+      "evidence_date": "2026-04-23",
+      "jtbd": "Know which vendor is working on which property and when to follow up.",
+      "competitor": "Buildium",
+      "seo_primary": "rental property vendor tracker",
+      "seo_longtail": [
+        "landlord maintenance vendor tracking spreadsheet",
+        "property repair contractor assignment tracker"
+      ],
+      "monetization_hypothesis": "Free ad-supported core; possible paid export/preset functionality only after demand and billing validation.",
+      "score": 76,
+      "ad_fit": "Medium-high: property services and landlord software",
+      "technical_risk": "Medium: local-only; no remote team sync",
+      "differentiation": "Replace a scattered vendor spreadsheet with a lightweight browser-local status board."
+    },
+    {
+      "slug": "scopelock",
+      "problem": "freelancer project scope creep baseline deliverables exclusions request approval change log",
+      "audience": "freelancers",
+      "evidence_url": "https://www.reddit.com/r/web_design/comments/1rrmke2/how_do_you_guys_actually_handle_scope_creep/",
+      "evidence_date": "2026-03-12",
+      "jtbd": "Track what was originally agreed and identify added work before unpaid revisions accumulate.",
+      "competitor": "HoneyBook",
+      "seo_primary": "freelance scope creep tracker",
+      "seo_longtail": [
+        "client change request log template",
+        "freelance project scope change tracker"
+      ],
+      "monetization_hypothesis": "Free ad-supported core; possible paid export/preset functionality only after demand and billing validation.",
+      "score": 75,
+      "ad_fit": "Medium: business productivity ads",
+      "technical_risk": "Medium: approvals are self-recorded, not signed",
+      "differentiation": "Track baseline vs changes, decisions and approved extra hours without a full CRM."
+    },
+    {
+      "slug": "proofsheet",
+      "problem": "photographer client photo contact sheet proofing file selection numbered images local batch export",
+      "audience": "photographers",
+      "evidence_url": "https://www.reddit.com/r/PhotographyAdvice/comments/1sehkp5/advice_for_proofing_for_new_photographer/",
+      "evidence_date": "2026-04-07",
+      "jtbd": "Give clients a quick labeled visual overview without learning another gallery platform.",
+      "competitor": "XnView MP",
+      "seo_primary": "photo contact sheet generator",
+      "seo_longtail": [
+        "contact sheet generator with filenames",
+        "create photo proof sheet online without upload"
+      ],
+      "monetization_hypothesis": "Free ad-supported core; possible paid export/preset functionality only after demand and billing validation.",
+      "score": 73,
+      "ad_fit": "Medium: photo printing and creative software",
+      "technical_risk": "Medium: canvas memory and browser file size limits",
+      "differentiation": "Make a local browser contact sheet, with filenames and no account."
+    },
+    {
+      "slug": "leasetick",
+      "problem": "landlord lease renewal expiration notice deadline calendar tracking reminder manual spreadsheet",
+      "audience": "landlords",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1wpk0yg/how_do_you_keep_tenant_info_lease_dates_and_rent/",
+      "evidence_date": "2026-09-25",
+      "jtbd": "Avoid losing track of lease expiry and planning dates across a small portfolio.",
+      "competitor": "TurboTenant",
+      "seo_primary": "lease renewal reminder calendar",
+      "seo_longtail": [
+        "lease expiration tracker with reminders",
+        "lease notice deadline calendar ics export"
+      ],
+      "monetization_hypothesis": "Free ad-supported core; possible paid export/preset functionality only after demand and billing validation.",
+      "score": 69,
+      "ad_fit": "Medium: landlord services ads",
+      "technical_risk": "Medium: legal notice periods vary; no automatic notices",
+      "differentiation": "Turn a manual lease date spreadsheet into importable calendar events."
+    }
+  ]
+}

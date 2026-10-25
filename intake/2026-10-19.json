@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-19",
+  "needs": [
+    {
+      "slug": "changeorderpad",
+      "problem": "construction change order labor material cost and client approval estimate before extra work",
+      "audience": "contractors",
+      "evidence_url": "https://www.reddit.com/r/ConstructionManagers/comments/1iu68me/",
+      "evidence_date": "2025-02-20",
+      "jtbd": "When a homeowner asks for work outside scope, I want a priced change request and schedule impact to approve before work begins.",
+      "competitor": "Joist Elite $32/mo monthly; https://www.joist.com/pricing/",
+      "seo_primary": "construction change order calculator",
+      "monetization_hypothesis": "ad supported free calculator; no checkout"
+    },
+    {
+      "slug": "depositledger",
+      "problem": "landlord security deposit itemized deductions receipt references and refund reconciliation",
+      "audience": "landlords",
+      "evidence_url": "https://www.reddit.com/r/Landlord/comments/yv297g/",
+      "evidence_date": "2022-11-14",
+      "jtbd": "When a tenant moves out, I want to itemize proposed charges with receipts and calculate a draft refund.",
+      "competitor": "TenantCloud Growth $35/mo monthly; https://www.tenantcloud.com/landlord ; free itemization competitors exist",
+      "seo_primary": "security deposit deduction calculator",
+      "monetization_hypothesis": "ad supported free worksheet; legal content must be reviewed"
+    },
+    {
+      "slug": "licensescope",
+      "problem": "commercial photographer usage rights license scope media territory duration and pricing quote",
+      "audience": "photographers",
+      "evidence_url": "https://www.reddit.com/r/photography/comments/1qobs9y/",
+      "evidence_date": "2026-01-27",
+      "jtbd": "When a client wants photos for multiple channels, I want to define license scope and quote additional usage transparently.",
+      "competitor": "Pixieset Basic $10/mo monthly gallery platform (adjacent); https://pixieset.com/pricing/ ; Getty usage calculator is a direct free alternative",
+      "seo_primary": "photography usage rights calculator",
+      "monetization_hypothesis": "free quote worksheet plus contextual ads after approval"
+    },
+    {
+      "slug": "ratefloor",
+      "problem": "freelancer minimum sustainable hourly rate after overhead nonbillable time and vacation",
+      "audience": "freelancers",
+      "evidence_url": "https://www.reddit.com/r/Freelancers/comments/1kducm5/",
+      "evidence_date": "2025-05-04",
+      "jtbd": "When pricing a freelance project, I want to estimate a sustainable hourly floor based on billable time and costs.",
+      "competitor": "Bonsai Essentials $25/user/mo monthly (broader suite); https://www.hellobonsai.com/pricing ; multiple free calculators compete",
+      "seo_primary": "freelance hourly rate calculator",
+      "monetization_hypothesis": "free rate calculator with ads only after site approval"
+    },
+    {
+      "slug": "cleanbid",
+      "problem": "cleaning company partial room based quotation instead of square foot pricing with labor overhead margin",
+      "audience": "cleaning businesses",
+      "evidence_url": "https://www.reddit.com/r/cleaningbusiness/comments/1sy2tna/",
+      "evidence_date": "2026-04-28",
+      "jtbd": "When a customer requests only selected rooms, I want a quick accurate labor-based cleaning bid without driving onsite for every quote.",
+      "competitor": "Jobber Core $49/mo monthly (broader service platform); https://www.getjobber.com/pricing/ ; MopMath $29 one-time bid kit",
+      "seo_primary": "room by room cleaning quote calculator",
+      "monetization_hypothesis": "ad supported free calculator with printable bids"
+    }
+  ]
+}

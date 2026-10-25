@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-20",
+  "needs": [
+    {
+      "slug": "tileaudit", "problem": "contractor tile installation labor billing net installed square footage versus tile material waste and boxes", "audience": "contractors", "evidence_url": "https://www.reddit.com/r/Tile/comments/1r91s4c/how_labor_is_calculated/", "evidence_date": "2026-02-19", "jtbd": "Compare labor billing on installed floor area with material quantities that include cut waste, and explain the difference to a client.", "competitor": "TilePlan free browser tile layout planner; TilesPOS free tile calculator; pricing $0 for these narrow calculators", "seo_primary": "tile labor vs material waste calculator", "monetization_hypothesis": "Free comparison tool; contextually relevant non-intrusive display ads if approved; paid client estimate PDF only after validation"
+    },
+    {
+      "slug": "dilutiondeck", "problem": "professional cleaning spray bottle product to water concentrate dilution measurement and cost per bottle", "audience": "cleaning businesses", "evidence_url": "https://www.reddit.com/r/CleaningTips/comments/1av0qpv", "evidence_date": "2024-02-19", "jtbd": "Calculate product and water quantities for a labeled dilution in a nonstandard spray bottle without guessing units.", "competitor": "Free USCalc spray bottle dilution calculator; Zep product-specific mixing instructions (not a competing software subscription)", "seo_primary": "cleaning concentrate dilution calculator", "monetization_hypothesis": "Free tool, ads from cleaning supply context subject to policy; avoid recommending unsafe chemical mixtures"
+    },
+    {
+      "slug": "printfit", "problem": "photographer pixel dimensions cropped print size PPI and downloadable print aspect ratio image", "audience": "photographers", "evidence_url": "https://www.reddit.com/r/AskPhotography/comments/1ky4ssp", "evidence_date": "2025-05-29", "jtbd": "Check whether a photo still has enough pixels after cropping to the selected print aspect ratio and export the crop.", "competitor": "Free Pixel to Print checker; Adobe Photoshop individual subscription price US$22.99/month shown on official pricing (not directly comparable to simple calculator)", "seo_primary": "photo print crop calculator", "monetization_hypothesis": "Free local image checker; photo-printing contextual ads, no upload, optional premium batch tool later"
+    },
+    {
+      "slug": "prorateclear", "problem": "landlord move in or move out rent proration differences actual month days versus fixed 30 day divisor and day inclusion", "audience": "landlords", "evidence_url": "https://www.reddit.com/r/Landlord/comments/1fep9e6", "evidence_date": "2024-09-12", "jtbd": "Show both common partial-month rent calculations and the agreed occupied-day convention transparently.", "competitor": "TurboTenant free landlord tools and optional Essentials $149–349/year; RentRedi $29.95/month or $12/month annual billing (full platforms, not identical calculators)", "seo_primary": "prorated rent 30 day vs actual days calculator", "monetization_hypothesis": "Free comparison calculator with contextual rental management ads, no personalized legal claims"
+    },
+    {
+      "slug": "retainerpulse", "problem": "freelance client monthly retainer hour usage task logs and early overage alerts without full agency software", "audience": "freelancers", "evidence_url": "https://www.reddit.com/r/freelance/comments/d0n9qn", "evidence_date": "2019-09-06", "jtbd": "Log retainer tasks and see remaining included hours to flag scope overruns before month end.", "competitor": "Clockify free time tracking, Basic $3.99/user/month annually or $4.99 monthly; Toggl Track Starter $9/user/month annually", "seo_primary": "freelance retainer hours tracker", "monetization_hypothesis": "Free local tracker with contextual B2B software ads; optional paid multi-client sync only if users request it"
+    }
+  ]
+}

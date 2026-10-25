@@ -1,0 +1,216 @@
+{
+  "schema_version": 1,
+  "notice": "Persistent idea history; commit to Git with every accepted intake so future days can deduplicate.",
+  "entries": [
+    {
+      "slug": "punchlite",
+      "date": "2026-10-18",
+      "problem": "small contractor punch list issue tracking with photos",
+      "audience": "contractors"
+    },
+    {
+      "slug": "moveoutpdf",
+      "date": "2026-10-18",
+      "problem": "rental move-out inspection photo pdf documentation",
+      "audience": "landlords"
+    },
+    {
+      "slug": "shotgrid",
+      "date": "2026-10-18",
+      "problem": "product photography shot list and checklist",
+      "audience": "photographers"
+    },
+    {
+      "slug": "gentlenudge",
+      "date": "2026-10-18",
+      "problem": "freelance overdue invoice reminder templates and tracker",
+      "audience": "freelancers"
+    },
+    {
+      "slug": "notarymiles",
+      "date": "2026-10-18",
+      "problem": "mobile notary manual mileage log and CSV export",
+      "audience": "notaries"
+    },
+    {
+      "slug": "changeorderpad",
+      "problem": "construction change order labor material cost and client approval estimate before extra work",
+      "audience": "contractors",
+      "date": "2026-10-19"
+    },
+    {
+      "slug": "depositledger",
+      "problem": "landlord security deposit itemized deductions receipt references and refund reconciliation",
+      "audience": "landlords",
+      "date": "2026-10-19"
+    },
+    {
+      "slug": "licensescope",
+      "problem": "commercial photographer usage rights license scope media territory duration and pricing quote",
+      "audience": "photographers",
+      "date": "2026-10-19"
+    },
+    {
+      "slug": "ratefloor",
+      "problem": "freelancer minimum sustainable hourly rate after overhead nonbillable time and vacation",
+      "audience": "freelancers",
+      "date": "2026-10-19"
+    },
+    {
+      "slug": "cleanbid",
+      "problem": "cleaning company partial room based quotation instead of square foot pricing with labor overhead margin",
+      "audience": "cleaning businesses",
+      "date": "2026-10-19"
+    },
+    {
+      "slug": "tileaudit",
+      "problem": "contractor tile installation labor billing net installed square footage versus tile material waste and boxes",
+      "audience": "contractors",
+      "date": "2026-10-20"
+    },
+    {
+      "slug": "dilutiondeck",
+      "problem": "professional cleaning spray bottle product to water concentrate dilution measurement and cost per bottle",
+      "audience": "cleaning businesses",
+      "date": "2026-10-20"
+    },
+    {
+      "slug": "printfit",
+      "problem": "photographer pixel dimensions cropped print size PPI and downloadable print aspect ratio image",
+      "audience": "photographers",
+      "date": "2026-10-20"
+    },
+    {
+      "slug": "prorateclear",
+      "problem": "landlord move in or move out rent proration differences actual month days versus fixed 30 day divisor and day inclusion",
+      "audience": "landlords",
+      "date": "2026-10-20"
+    },
+    {
+      "slug": "retainerpulse",
+      "problem": "freelance client monthly retainer hour usage task logs and early overage alerts without full agency software",
+      "audience": "freelancers",
+      "date": "2026-10-20"
+    },
+    {
+      "slug": "drywallwise",
+      "problem": "contractor drywall panel sheet takeoff estimating wall ceiling square footage door window openings and overage",
+      "audience": "contractors",
+      "date": "2026-10-21"
+    },
+    {
+      "slug": "vendorboard",
+      "problem": "landlord vendor repair assignment status property contact project tracking across multiple rental units",
+      "audience": "landlords",
+      "date": "2026-10-21"
+    },
+    {
+      "slug": "scopelock",
+      "problem": "freelancer project scope creep baseline deliverables exclusions request approval change log",
+      "audience": "freelancers",
+      "date": "2026-10-21"
+    },
+    {
+      "slug": "proofsheet",
+      "problem": "photographer client photo contact sheet proofing file selection numbered images local batch export",
+      "audience": "photographers",
+      "date": "2026-10-21"
+    },
+    {
+      "slug": "leasetick",
+      "problem": "landlord lease renewal expiration notice deadline calendar tracking reminder manual spreadsheet",
+      "audience": "landlords",
+      "date": "2026-10-21"
+    },
+    {
+      "slug": "concreteyield",
+      "date": "2026-10-22",
+      "problem": "multi-section concrete slab and post-hole bag yield cubic yard volume and purchase estimation",
+      "audience": "contractors"
+    },
+    {
+      "slug": "photovaultplan",
+      "date": "2026-10-22",
+      "problem": "photographer RAW video backup capacity forecast local redundant hard drive cloud cost planning",
+      "audience": "photographers"
+    },
+    {
+      "slug": "reserveready",
+      "date": "2026-10-22",
+      "problem": "rental property monthly maintenance reserve contribution and unexpected repair cash gap planning",
+      "audience": "landlords"
+    },
+    {
+      "slug": "marginwatch",
+      "date": "2026-10-22",
+      "problem": "freelancer fixed fee project profitability in progress actual hours remaining work costs budget margin",
+      "audience": "freelancers"
+    },
+    {
+      "slug": "travelbuffer",
+      "date": "2026-10-22",
+      "problem": "mobile service business appointment travel before after buffer overlap calendar block planning",
+      "audience": "freelancers"
+    },
+    {
+      "slug": "metersplit",
+      "problem": "shared water meter landlord duplex occupant day bill allocation comparison and documentation",
+      "audience": "Landlords",
+      "date": "2026-10-23"
+    },
+    {
+      "slug": "clientrename",
+      "problem": "professional photographer batch client delivery photo file naming sequential collision free zip download",
+      "audience": "Photographers",
+      "date": "2026-10-23"
+    },
+    {
+      "slug": "visitfloor",
+      "problem": "handyman small repair minimum service visit charge travel truck overhead price threshold calculation",
+      "audience": "Contractors",
+      "date": "2026-10-23"
+    },
+    {
+      "slug": "rushquote",
+      "problem": "freelance urgent turnaround rush surcharge overtime quote deadline client negotiation calculator",
+      "audience": "Freelancers",
+      "date": "2026-10-23"
+    },
+    {
+      "slug": "warrantynest",
+      "problem": "rental property appliance warranty expiration registration serial number inventory reminder calendar",
+      "audience": "Landlords",
+      "date": "2026-10-23"
+    },
+    {
+      "slug": "fencebid",
+      "date": "2026-10-24",
+      "problem": "fence installation run and gate opening estimating",
+      "audience": "contractors"
+    },
+    {
+      "slug": "mulchcompare",
+      "date": "2026-10-24",
+      "problem": "bag versus bulk mulch order cost across multiple garden beds",
+      "audience": "contractors"
+    },
+    {
+      "slug": "weddingflow",
+      "date": "2026-10-24",
+      "problem": "wedding photographer ceremony anchored schedule and coverage conflict",
+      "audience": "photographers"
+    },
+    {
+      "slug": "turnoverbudget",
+      "date": "2026-10-24",
+      "problem": "landlord unit turnover repairs cleaning and vacancy owner cost budget",
+      "audience": "landlords"
+    },
+    {
+      "slug": "feenet",
+      "date": "2026-10-24",
+      "problem": "merchant card payment fee structure net receipts comparison",
+      "audience": "freelancers"
+    }
+  ]
+}

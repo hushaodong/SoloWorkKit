@@ -1,0 +1,963 @@
+{
+  "brand": "Worklane Tools",
+  "tagline": "Free, focused tools for independent professionals",
+  "site_url": "",
+  "description": "Practical browser-based tools for independent contractors, landlords, photographers, and freelancers. No account required for the free core tools.",
+  "tools": [
+    {
+      "slug": "punchlite",
+      "name": "PunchLite",
+      "audience": "Contractors",
+      "category": "contractors",
+      "emoji": "📋",
+      "headline": "Free Contractor Punch List Maker with Photos",
+      "description": "Create a jobsite punch list with photos, due dates, trade assignments and an exportable report. Works in your browser without an account.",
+      "keywords": [
+        "contractor punch list app",
+        "construction punch list with photos",
+        "free punch list PDF"
+      ],
+      "best_for": "Contractors who need a simple jobsite issue tracker instead of an all-in-one construction platform.",
+      "howto": [
+        "Name the project and create an item for each unfinished or defective task.",
+        "Assign each item to a trade, add a due date and photo, and mark it complete when resolved.",
+        "Export a CSV to preserve the task list or use Print to save a PDF summary."
+      ],
+      "limitations": "Records are stored on this device. There is no team collaboration, shared project history or cloud backup; photos may exhaust browser storage.",
+      "faq_question": "Does this punch list tool work without a login?",
+      "faq_answer": "Yes. PunchLite works in your browser. Save exports regularly because clearing browser storage can erase your work.",
+      "approved_for_index": true,
+      "evidence_reviewed": false,
+      "seed_from": "2026-10-18"
+    },
+    {
+      "slug": "moveoutpdf",
+      "name": "MoveOutPDF",
+      "audience": "Landlords",
+      "category": "landlords",
+      "emoji": "🏠",
+      "headline": "Free Move-Out Inspection Photo Report Maker",
+      "description": "Organize rental move-out photos by room, add notes and print an inspection photo report as a PDF directly from your browser.",
+      "keywords": [
+        "move out inspection photo report",
+        "rental inspection photo PDF",
+        "landlord move out photo checklist"
+      ],
+      "best_for": "Independent landlords who want a clear, portable photo record at tenant handover.",
+      "howto": [
+        "Set the property or project name and add move-out photos from your device.",
+        "Assign each photo to a room and write factual condition notes.",
+        "Use the print view to save a PDF; back up the report before closing the browser."
+      ],
+      "limitations": "This is a documentation aid, not a legal determination of damage or deposit deductions. No cloud storage or guaranteed evidence preservation is provided.",
+      "faq_question": "Can I generate a move-out report without uploading photos to a server?",
+      "faq_answer": "Yes. The MVP processes the selected photos in your browser. Export the report before leaving the page, as records may not persist.",
+      "approved_for_index": true,
+      "evidence_reviewed": false,
+      "seed_from": "2026-10-18"
+    },
+    {
+      "slug": "shotgrid",
+      "name": "ShotGrid",
+      "audience": "Photographers",
+      "category": "photographers",
+      "emoji": "📸",
+      "headline": "Simple Product Photography Shot List Checklist",
+      "description": "Plan product photography shots, track shooting progress, bulk-import a checklist and export your shot list to CSV.",
+      "keywords": [
+        "product photography shot list",
+        "product photoshoot checklist",
+        "shot list CSV export"
+      ],
+      "best_for": "Solo product photographers documenting angles, scenes and deliverables for repeatable shoots.",
+      "howto": [
+        "Define shots by product, angle or setup.",
+        "Use bulk entry to plan a full shooting session quickly.",
+        "Check off completed images and export your list for handoff."
+      ],
+      "limitations": "A lightweight checklist, not a studio production scheduling platform or file delivery service.",
+      "faq_question": "Can I export a product photography shot list?",
+      "faq_answer": "Yes. Your checklist can be exported to CSV for spreadsheet review and client handoff.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "seed_from": "2026-10-18"
+    },
+    {
+      "slug": "gentlenudge",
+      "name": "GentleNudge",
+      "audience": "Freelancers",
+      "category": "freelancers",
+      "emoji": "✉️",
+      "headline": "Polite Overdue Invoice Reminder Email Generator",
+      "description": "Track overdue invoices, calculate payment lateness and copy a professional follow-up email without sending automatic messages.",
+      "keywords": [
+        "overdue invoice reminder email",
+        "freelancer invoice follow up",
+        "polite invoice email template"
+      ],
+      "best_for": "Freelancers who want friendly payment follow-ups but do not need accounting software.",
+      "howto": [
+        "Enter the client, invoice amount and payment due date.",
+        "Review invoice age and choose a polite reminder draft.",
+        "Copy the email and send it yourself after checking details."
+      ],
+      "limitations": "No email is sent by the app. The tool is not a bookkeeping, tax or collections service.",
+      "faq_question": "Does this invoice reminder tool send emails for me?",
+      "faq_answer": "No. GentleNudge creates a draft you can review and copy. Email sending and payment collection remain in your control.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "seed_from": "2026-10-18"
+    },
+    {
+      "slug": "notarymiles",
+      "name": "NotaryMiles",
+      "audience": "Mobile Notaries",
+      "category": "notaries",
+      "emoji": "🚗",
+      "headline": "Manual Mobile Notary Mileage Log and CSV Export",
+      "description": "Record business odometer readings, estimate trip distance and export a simple mileage log for independent notaries.",
+      "keywords": [
+        "mobile notary mileage log",
+        "notary mileage tracker spreadsheet",
+        "manual mileage log for notaries"
+      ],
+      "best_for": "Mobile notaries who prefer manual trip entry instead of continuous location tracking.",
+      "howto": [
+        "Enter each trip date, destination and odometer start and end readings.",
+        "Review the calculated distance and optional reference-rate estimate.",
+        "Export a CSV and independently verify records before using for tax purposes."
+      ],
+      "limitations": "No GPS tracking or automatic trip detection. Mileage deductions and eligibility depend on the applicable tax rules and use case.",
+      "faq_question": "Does this mileage tool automatically detect trips?",
+      "faq_answer": "No. This is a manual odometer log. If you need automatic detection, select a dedicated GPS mileage app.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "seed_from": "2026-10-18"
+    },
+    {
+      "slug": "changeorderpad",
+      "name": "ChangeOrderPad",
+      "audience": "Contractors",
+      "category": "contractors",
+      "emoji": "🧾",
+      "headline": "Free Construction Change Order Calculator & Printable Form",
+      "description": "Estimate additional construction work from labor, materials, overhead and target margin, with a print-ready scope request.",
+      "keywords": [
+        "construction change order calculator",
+        "change order estimate template",
+        "change order form for contractors"
+      ],
+      "best_for": "Small contractors pricing homeowner-requested scope changes before starting additional work.",
+      "howto": [
+        "Enter the changed scope, labor hours and costs.",
+        "Set overhead and gross-margin assumptions and calculate the additional quote.",
+        "Print the change request for separate written approval; export the estimate CSV."
+      ],
+      "limitations": "Does not collect signatures or verify contract terms, taxes or permits. Sample values are not market rates.",
+      "faq_question": "Can this create a legally signed change order?",
+      "faq_answer": "No. It produces an estimate draft. Obtain client authorization using your actual contract process.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": false,
+      "seed_from": "2026-10-19"
+    },
+    {
+      "slug": "depositledger",
+      "name": "DepositLedger",
+      "audience": "Landlords",
+      "category": "landlords",
+      "emoji": "🧮",
+      "headline": "Free Security Deposit Deduction Ledger & Refund Calculator",
+      "description": "Itemize proposed deposit deductions with receipt references and calculate a draft refund, printable or exportable as CSV.",
+      "keywords": [
+        "security deposit deduction calculator",
+        "security deposit itemized list",
+        "rental deposit refund worksheet"
+      ],
+      "best_for": "Self-managing landlords organizing receipt-backed proposed charges and deposit accounting.",
+      "howto": [
+        "Enter the deposit and any interest you independently determine is owed.",
+        "Add factual descriptions, amounts and invoice references for each proposed charge.",
+        "Review the refund math, export the ledger and verify local legal rules before sending."
+      ],
+      "limitations": "Not a legal notice; does not determine lawful deductions, deadlines, interest or ordinary wear and tear.",
+      "faq_question": "Does this check my state security-deposit laws?",
+      "faq_answer": "No. State and local rules vary. This worksheet performs arithmetic and produces a draft only.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": false,
+      "seed_from": "2026-10-19"
+    },
+    {
+      "slug": "licensescope",
+      "name": "LicenseScope",
+      "audience": "Photographers",
+      "category": "photographers",
+      "emoji": "📷",
+      "headline": "Free Photography Usage License Scope & Quote Builder",
+      "description": "Draft commercial image usage terms and an illustrative quote by media, territory, term and exclusivity using your own base fee.",
+      "keywords": [
+        "photography usage rights calculator",
+        "photo licensing quote",
+        "commercial photography license scope"
+      ],
+      "best_for": "Commercial photographers documenting proposed usage rights separately from their shooting fee.",
+      "howto": [
+        "Enter the number of images and your own base licensing fee.",
+        "Select proposed media, territory, term and exclusivity; edit permitted channels.",
+        "Review the illustrative quote and copy or print the scope for contract review."
+      ],
+      "limitations": "Illustrative multipliers are not industry pricing standards. This is not a license, rights clearance or legal agreement.",
+      "faq_question": "Does this provide legally binding image licenses?",
+      "faq_answer": "No. It prepares a negotiation worksheet and scope draft; use a reviewed contract.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": false,
+      "seed_from": "2026-10-19"
+    },
+    {
+      "slug": "ratefloor",
+      "name": "RateFloor",
+      "audience": "Freelancers",
+      "category": "freelancers",
+      "emoji": "📈",
+      "headline": "Free Freelance Minimum Hourly Rate Calculator",
+      "description": "Calculate a sustainable hourly-rate floor with overhead, tax reserve, vacation and billable utilization, plus project quote scenarios.",
+      "keywords": [
+        "freelance hourly rate calculator",
+        "freelancer billable hours calculator",
+        "minimum freelance rate calculator"
+      ],
+      "best_for": "Independent professionals pricing projects without assuming all working hours are billable.",
+      "howto": [
+        "Set desired take-home income and estimated business overhead.",
+        "Adjust illustrative tax reserve, vacation weeks and billable utilization.",
+        "Compare rate floors and export a scenario for your own pricing decision."
+      ],
+      "limitations": "Not tax, accounting or financial advice. No tax rules or market prices are computed.",
+      "faq_question": "Is the result the market price I should charge?",
+      "faq_answer": "No. It estimates your personal financial floor. Market demand and your skills may support different prices.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": false,
+      "seed_from": "2026-10-19"
+    },
+    {
+      "slug": "cleanbid",
+      "name": "CleanBid",
+      "audience": "Cleaning Businesses",
+      "category": "cleaning",
+      "emoji": "🧹",
+      "headline": "Free Room-by-Room Cleaning Quote & Profit Margin Calculator",
+      "description": "Quote cleaning jobs by selected areas and estimated labor hours, with supplies, overhead, profit margin and monthly recurrence.",
+      "keywords": [
+        "room by room cleaning quote calculator",
+        "cleaning bid calculator",
+        "partial home cleaning estimate"
+      ],
+      "best_for": "Small cleaning companies quoting a partial-home or small-office job without using square footage alone.",
+      "howto": [
+        "List only the rooms or tasks included in the cleaning scope.",
+        "Enter crew labor hours, loaded wages, supplies, overhead and desired margin.",
+        "Print a per-visit and recurring monthly bid or export the task estimate."
+      ],
+      "limitations": "Labor hours are editable guesses; no site inspection, wage compliance, tax or insurance verification is provided.",
+      "faq_question": "Can I quote only a kitchen and two bathrooms?",
+      "faq_answer": "Yes. Remove unneeded areas and estimate only the labor required for the requested tasks.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": false,
+      "seed_from": "2026-10-19"
+    },
+    {
+      "slug": "tileaudit",
+      "name": "TileAudit",
+      "audience": "Contractors",
+      "category": "contractors",
+      "emoji": "🧱",
+      "headline": "Free Tile Material Waste vs Labor Quote Calculator",
+      "description": "Check tile box waste and compare labor billed on installed square footage versus ordered tile coverage.",
+      "keywords": [
+        "tile labor vs material waste calculator",
+        "tile installation labor square footage calculator",
+        "tile quote waste cost comparison"
+      ],
+      "best_for": "Contractors and homeowners checking tile estimates with different material and labor bases.",
+      "howto": [
+        "Enter the installed surface area, expected waste and coverage per tile box.",
+        "Add tile cost and labor rate; compare installed-area labor with purchased-area labor.",
+        "Print or copy a transparent quote comparison before agreeing on the billing basis."
+      ],
+      "limitations": "This is not a layout simulator or a pricing standard; cut patterns and contract terms can change real costs.",
+      "faq_question": "Should labor be charged on tile waste?",
+      "faq_answer": "This tool shows the arithmetic difference only. Labor billing depends on the written quote and the work performed.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": true,
+      "seed_from": "2026-10-20"
+    },
+    {
+      "slug": "dilutiondeck",
+      "name": "DilutionDeck",
+      "audience": "Cleaners & detailers",
+      "category": "cleaning",
+      "emoji": "🧴",
+      "headline": "Cleaning Concentrate Dilution Ratio Calculator for Spray Bottles",
+      "description": "Convert manufacturer-approved product-to-water ratios into bottle quantities and estimate cost per fill.",
+      "keywords": [
+        "cleaning concentrate dilution calculator",
+        "1 to 10 dilution 32 oz bottle",
+        "spray bottle concentrate ounces calculator"
+      ],
+      "best_for": "Professional cleaners and car detailers transferring labeled concentrate into smaller spray bottles.",
+      "howto": [
+        "Read the exact product label and enter product parts and water parts.",
+        "Choose your bottle volume and unit, then calculate concentrate and water quantities.",
+        "Print or copy the mixing instructions after checking the manufacturer safety data."
+      ],
+      "limitations": "Not a chemical compatibility or disinfection effectiveness tool. Do not mix different chemicals; use only label-approved ratios.",
+      "faq_question": "Is 1:10 the same as 10% concentrate?",
+      "faq_answer": "No. One part product to ten parts water is one of eleven total parts, about 9.09% concentrate.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": true,
+      "seed_from": "2026-10-20"
+    },
+    {
+      "slug": "printfit",
+      "name": "PrintFit",
+      "audience": "Photographers",
+      "category": "photographers",
+      "emoji": "🖼️",
+      "headline": "Photo Print Resolution & Aspect Ratio Crop Checker",
+      "description": "Load a local photo, check effective print PPI after cropping and export a print-ratio JPEG without uploading.",
+      "keywords": [
+        "photo print crop calculator",
+        "pixels per inch after cropping photo",
+        "12x8 photo print resolution checker"
+      ],
+      "best_for": "Photographers preparing print-ready image crops while avoiding unexpected low-resolution results.",
+      "howto": [
+        "Choose a JPEG, PNG or WebP photo stored on your device.",
+        "Enter the intended print dimensions and target PPI; inspect retained pixels.",
+        "Download the center-cropped JPEG or adjust your print aspect ratio."
+      ],
+      "limitations": "A center crop can remove important subjects; does not upscale, color-proof or add lab-specific bleed.",
+      "faq_question": "Does changing JPEG DPI metadata improve image detail?",
+      "faq_answer": "No. Effective print sharpness depends primarily on the source pixel dimensions, crop and physical print size.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": true,
+      "seed_from": "2026-10-20"
+    },
+    {
+      "slug": "prorateclear",
+      "name": "ProrateClear",
+      "audience": "Landlords",
+      "category": "landlords",
+      "emoji": "🏡",
+      "headline": "Prorated Rent Calculator: Compare 30-Day vs Actual Days",
+      "description": "Calculate partial-month rent using actual calendar days and a 30-day divisor with explicit occupancy-day rules.",
+      "keywords": [
+        "prorated rent 30 day vs actual days calculator",
+        "move in mid month rent proration",
+        "partial month rent day count calculator"
+      ],
+      "best_for": "Landlords and tenants comparing lease proration arithmetic before a move-in or move-out.",
+      "howto": [
+        "Enter the monthly rent, month, year and occupied date range.",
+        "Specify whether the final occupied day counts, and compare both divisors.",
+        "Copy or print the calculation and confirm the lease and applicable local law."
+      ],
+      "limitations": "Not legal advice; does not determine whether proration is legally required or override a signed lease.",
+      "faq_question": "Which proration method is legally required?",
+      "faq_answer": "It depends on the lease and applicable law. This calculator compares arithmetic, not legal entitlement.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": true,
+      "seed_from": "2026-10-20"
+    },
+    {
+      "slug": "retainerpulse",
+      "name": "RetainerPulse",
+      "audience": "Freelancers",
+      "category": "freelancers",
+      "emoji": "⏱️",
+      "headline": "Freelance Retainer Hours Tracker with CSV Usage Report",
+      "description": "Log monthly client retainer tasks and hours, track remaining allowance and export an auditable usage CSV.",
+      "keywords": [
+        "freelance retainer hours tracker",
+        "monthly client retainer usage report",
+        "retainer hours remaining calculator"
+      ],
+      "best_for": "Solo consultants and small agencies tracking hours included in client retainers.",
+      "howto": [
+        "Enter the client, month, included hours and monthly fee.",
+        "Log each task with date and time spent; monitor hours used and remaining.",
+        "Export the task-level CSV before clearing local browser data."
+      ],
+      "limitations": "Data is stored in localStorage on this device; no multi-user approval, shared sync or automatic billing.",
+      "faq_question": "Can I send a usage report to a client?",
+      "faq_answer": "Yes. Export a CSV of logged tasks and hours; review it before sending.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": true,
+      "seed_from": "2026-10-20"
+    },
+    {
+      "slug": "drywallwise",
+      "name": "DrywallWise",
+      "audience": "Contractors",
+      "category": "contractors",
+      "emoji": "🧱",
+      "headline": "Drywall Sheet Calculator by Room",
+      "description": "Estimate 4x8 or 4x12 drywall sheets across rooms, subtract openings, add a waste allowance and export a room takeoff CSV.",
+      "keywords": [
+        "drywall sheet calculator by room",
+        "drywall sheets per room calculator",
+        "drywall 4x12 sheet estimate with doors windows"
+      ],
+      "best_for": "Calculate sheet order across rooms and avoid disputes caused by inconsistent drywall quantities.",
+      "howto": [
+        "Enter each room dimensions, openings and ceiling coverage.",
+        "Choose sheet size, allowance and unit price.",
+        "Review totals and export room takeoff CSV."
+      ],
+      "limitations": "Area-based material estimate, not an engineered sheet layout, code assessment or guaranteed order quantity.",
+      "faq_question": "Does this drywall calculator subtract door and window openings?",
+      "faq_answer": "Yes. Enter the measured opening area per room, then verify the cut layout before ordering.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": true,
+      "seed_from": "2026-10-21"
+    },
+    {
+      "slug": "vendorboard",
+      "name": "VendorBoard",
+      "audience": "Landlords",
+      "category": "landlords",
+      "emoji": "🔧",
+      "headline": "Rental Property Vendor Assignment Tracker",
+      "description": "Coordinate plumbers, painters and other repair vendors across rental properties, with follow-up dates, job status and CSV export.",
+      "keywords": [
+        "rental property vendor tracker",
+        "landlord maintenance vendor tracking spreadsheet",
+        "property repair contractor assignment tracker"
+      ],
+      "best_for": "Know which vendor is working on which property and when to follow up.",
+      "howto": [
+        "Add a property, vendor and repair assignment.",
+        "Update the status and follow-up date.",
+        "Export the current assignment list to CSV."
+      ],
+      "limitations": "Local-only job records; no notifications, team sync or vendor vetting.",
+      "faq_question": "Does the vendor tracker send repair assignments automatically?",
+      "faq_answer": "No. It is a browser-local record with manual status updates and CSV export.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": true,
+      "seed_from": "2026-10-21"
+    },
+    {
+      "slug": "scopelock",
+      "name": "ScopeLock",
+      "audience": "Freelancers",
+      "category": "freelancers",
+      "emoji": "📑",
+      "headline": "Freelance Scope Creep and Change Request Tracker",
+      "description": "Document project deliverables and exclusions, log extra requests and estimated hours, and export a client scope change record.",
+      "keywords": [
+        "freelance scope creep tracker",
+        "client change request log template",
+        "freelance project scope change tracker"
+      ],
+      "best_for": "Track what was originally agreed and identify added work before unpaid revisions accumulate.",
+      "howto": [
+        "Record the agreed project scope and exclusions.",
+        "Log every additional client request with hours and decision.",
+        "Export the change log for client discussion."
+      ],
+      "limitations": "Self-recorded approvals are not a contract or legally verified acceptance.",
+      "faq_question": "Can I use this scope log as a signed change order?",
+      "faq_answer": "No. Keep your written client approvals and signed agreements separately.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": true,
+      "seed_from": "2026-10-21"
+    },
+    {
+      "slug": "proofsheet",
+      "name": "ProofSheet",
+      "audience": "Photographers",
+      "category": "photographers",
+      "emoji": "🖼️",
+      "headline": "Free Photo Contact Sheet Generator",
+      "description": "Combine local JPEG, PNG and WebP images into a customizable numbered contact sheet and download a single PNG.",
+      "keywords": [
+        "photo contact sheet generator",
+        "contact sheet generator with filenames",
+        "create photo proof sheet online without upload"
+      ],
+      "best_for": "Give clients a quick labeled visual overview without learning another gallery platform.",
+      "howto": [
+        "Select up to 36 supported local photos.",
+        "Choose columns, thumbnail size and caption style.",
+        "Download a contact-sheet PNG without uploading images."
+      ],
+      "limitations": "Raster PNG only; maximum 36 images; browser memory limits; no cloud gallery.",
+      "faq_question": "Are my photos uploaded to a server?",
+      "faq_answer": "No. Image processing occurs locally in your browser.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": true,
+      "seed_from": "2026-10-21"
+    },
+    {
+      "slug": "leasetick",
+      "name": "LeaseTick",
+      "audience": "Landlords",
+      "category": "landlords",
+      "emoji": "📅",
+      "headline": "Lease Renewal Date and Notice Calendar Planner",
+      "description": "Track lease end dates, calculate user-entered notice lead times and download an iCalendar file for personal reminders.",
+      "keywords": [
+        "lease renewal reminder calendar",
+        "lease expiration tracker with reminders",
+        "lease notice deadline calendar ics export"
+      ],
+      "best_for": "Avoid losing track of lease expiry and planning dates across a small portfolio.",
+      "howto": [
+        "Enter the property, lease end and verified lead times.",
+        "Review calculated planning and notice dates.",
+        "Download an ICS file and import it into your calendar."
+      ],
+      "limitations": "You must verify notice rules; ICS export does not send notices or notifications by itself.",
+      "faq_question": "Does this planner automatically send lease renewal notices?",
+      "faq_answer": "No. Import the downloaded ICS into your calendar, and handle legal notices separately.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": true,
+      "seed_from": "2026-10-21"
+    },
+    {
+      "slug": "concreteyield",
+      "name": "ConcreteYield",
+      "audience": "Contractors",
+      "category": "contractors",
+      "emoji": "🧱",
+      "headline": "Concrete Bag & Cubic Yard Calculator for Multiple Pours",
+      "description": "Estimate slab and round post-hole concrete volumes, bag quantities, overage and material cost with a printable CSV takeoff.",
+      "keywords": [
+        "concrete bag calculator for multiple pours",
+        "concrete cubic yards and bags calculator",
+        "post hole concrete bag calculator with waste",
+        "concrete slab material takeoff CSV"
+      ],
+      "best_for": "Estimate the bag count and cubic yards across several pours with a transparent waste allowance.",
+      "howto": [
+        "Add each slab or post-hole pour using its dimensions and count.",
+        "Choose a bag yield, material overage and unit price.",
+        "Review the total cubic yards, bag count and exported takeoff."
+      ],
+      "limitations": "Approximate bag yields; no structural design, site survey, or ready-mix delivery quote.",
+      "faq_question": "Can I combine a slab and several round post holes?",
+      "faq_answer": "Yes. Add each section separately and check the actual product yield before buying.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": false,
+      "seed_from": "2026-10-22"
+    },
+    {
+      "slug": "photovaultplan",
+      "name": "PhotoVaultPlan",
+      "audience": "Photographers",
+      "category": "photographers",
+      "emoji": "💾",
+      "headline": "Photographer Backup Storage & Drive Cost Planner",
+      "description": "Forecast RAW photo and video storage, redundant local drives, and estimated cloud costs across 1–10 years without uploading files.",
+      "keywords": [
+        "photography backup storage calculator",
+        "RAW photo storage size planner",
+        "photo backup hard drive cost calculator",
+        "photographer NAS vs cloud capacity estimate"
+      ],
+      "best_for": "Forecast storage growth and costs before buying disks or cloud storage.",
+      "howto": [
+        "Enter yearly RAW photos and video, or sample image file sizes locally.",
+        "Choose planning years, growth, number of copies and disk capacity.",
+        "Review yearly capacity, hardware and cloud estimates; export CSV."
+      ],
+      "limitations": "Capacity estimates only; not a backup service. Cloud and drive prices are user inputs; no file upload.",
+      "faq_question": "Does the photo storage planner upload my files?",
+      "faq_answer": "No. It only reads file sizes locally when you choose a sample; no photos are transferred.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": false,
+      "seed_from": "2026-10-22"
+    },
+    {
+      "slug": "reserveready",
+      "name": "ReserveReady",
+      "audience": "Landlords",
+      "category": "landlords",
+      "emoji": "🏘️",
+      "headline": "Rental Property Maintenance Reserve Planner",
+      "description": "Estimate monthly maintenance contributions, emergency reserve shortfalls, and 12-month cash balances across multiple rental properties.",
+      "keywords": [
+        "rental property maintenance reserve calculator",
+        "landlord emergency repair fund planner",
+        "rental maintenance budget percentage calculator",
+        "property repair reserve 12 month forecast"
+      ],
+      "best_for": "Understand whether a property portfolio can withstand an unexpected repair after routine maintenance.",
+      "howto": [
+        "Add each property rent, routine repairs and reserve targets.",
+        "Choose a monthly contribution percentage and unexpected repair scenario.",
+        "Review year-end balance and the lowest cash balance, then export CSV."
+      ],
+      "limitations": "Not tax, accounting, insurance or investment advice; irregular repair timing cannot be predicted.",
+      "faq_question": "Does this tool predict when rental repairs will happen?",
+      "faq_answer": "No. It uses your assumptions to simulate one unexpected expense and a 12-month budget.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": false,
+      "seed_from": "2026-10-22"
+    },
+    {
+      "slug": "marginwatch",
+      "name": "MarginWatch",
+      "audience": "Freelancers",
+      "category": "freelancers",
+      "emoji": "📊",
+      "headline": "Freelance Fixed-Price Project Profitability Tracker",
+      "description": "Track actual project hours and costs against a fixed client quote to forecast profit, margin, and budget overruns before delivery.",
+      "keywords": [
+        "freelance project profitability tracker",
+        "fixed price project profit margin calculator",
+        "freelancer project hours budget tracker",
+        "project estimate vs actual cost tracker"
+      ],
+      "best_for": "Catch profit erosion while a fixed-price project is still running, not after invoicing.",
+      "howto": [
+        "Enter the fixed client quote, estimated hours and internal costs.",
+        "Log completed work sessions and update estimated hours remaining.",
+        "Compare planned profit with forecast margin; export the time log."
+      ],
+      "limitations": "Not accounting software; no integrations or client billing; labor cost is a user-entered assumption.",
+      "faq_question": "Can I see profit before a project is finished?",
+      "faq_answer": "Yes. The estimate combines logged hours, expected remaining hours, and entered costs.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": false,
+      "seed_from": "2026-10-22"
+    },
+    {
+      "slug": "travelbuffer",
+      "name": "TravelBuffer",
+      "audience": "Freelancers",
+      "category": "freelancers",
+      "emoji": "🚙",
+      "headline": "Appointment Travel Buffer & Calendar Conflict Planner",
+      "description": "Plan on-site appointments with pre/post travel buffers, detect schedule overlaps and export blocked-time iCalendar events.",
+      "keywords": [
+        "appointment travel time buffer calendar planner",
+        "mobile service appointment buffer calculator",
+        "client appointment travel time block ICS",
+        "on site service scheduling overlap checker"
+      ],
+      "best_for": "Reserve travel and prep time around mobile client appointments without blocking all appointments equally.",
+      "howto": [
+        "Enter the appointment date, start time, duration and travel buffers.",
+        "Check overlapping blocked-time intervals across appointments.",
+        "Export an ICS file and verify it after importing into your calendar."
+      ],
+      "limitations": "No live bookings, route calculation, calendar sync or customer reminders; all buffer times are manual.",
+      "faq_question": "Will this block my existing calendar automatically?",
+      "faq_answer": "No. Download the ICS file, import it into your calendar, and verify the time zone.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": false,
+      "seed_from": "2026-10-22"
+    },
+    {
+      "slug": "metersplit",
+      "name": "MeterSplit",
+      "audience": "Landlords",
+      "category": "landlords",
+      "emoji": "💧",
+      "headline": "Shared Water Bill Split Calculator for Duplex Rentals",
+      "description": "Compare equal-unit and occupant-day utility allocation scenarios for a shared-meter rental property; export an auditable CSV.",
+      "keywords": [
+        "shared water bill split calculator duplex",
+        "duplex water bill split by occupants calculator",
+        "shared utility meter allocation worksheet",
+        "rental water bill per person day calculator"
+      ],
+      "best_for": "Explain and compare transparent allocation assumptions for one meter serving multiple rental units.",
+      "howto": [
+        "Enter the total bill and the inclusive billing period.",
+        "Add each rental unit, occupants and days in the period.",
+        "Compare two hypothetical allocations and export CSV after checking lease and law."
+      ],
+      "limitations": "No meter readings or legal verification. Utility allocation may be restricted by local rules and leases; no billing is performed.",
+      "faq_question": "Can I legally charge tenants based on occupant-days?",
+      "faq_answer": "Not necessarily. This is a comparison of assumptions; check your state/local rules and lease terms before billing.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": false,
+      "seed_from": "2026-10-23"
+    },
+    {
+      "slug": "clientrename",
+      "name": "ClientRename",
+      "audience": "Photographers",
+      "category": "photographers",
+      "emoji": "🗂️",
+      "headline": "Batch Rename Client Photos and Download ZIP Online",
+      "description": "Preview client-ready photo filenames, detect duplicate names and download locally renamed JPG, PNG or WebP files as a ZIP.",
+      "keywords": [
+        "batch rename photos for client delivery online",
+        "client photo file naming generator",
+        "rename wedding photos sequentially zip",
+        "browser local batch rename JPG files"
+      ],
+      "best_for": "Convert camera-generated filenames into consistent client-ready names before delivery.",
+      "howto": [
+        "Select JPG, PNG or WebP files and enter a project prefix.",
+        "Preview sequential filenames and confirm there are no naming collisions.",
+        "Download one ZIP of renamed copies and verify its contents."
+      ],
+      "limitations": "JPG/PNG/WebP only, 100 files and 120 MiB per ZIP. Original files stay on your device; large batches may exceed memory.",
+      "faq_question": "Does the photo renamer upload or edit original images?",
+      "faq_answer": "No. It creates a local ZIP of renamed copies, without uploading or modifying originals.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": false,
+      "seed_from": "2026-10-23"
+    },
+    {
+      "slug": "visitfloor",
+      "name": "VisitFloor",
+      "audience": "Contractors",
+      "category": "contractors",
+      "emoji": "🧰",
+      "headline": "Handyman Minimum Service Call Price Calculator",
+      "description": "Estimate a sustainable minimum visit price using travel, labor, truck overhead, materials and target margin, with a printable quote.",
+      "keywords": [
+        "handyman minimum service call fee calculator",
+        "handyman trip charge calculator",
+        "service call minimum price with travel cost",
+        "small handyman job pricing worksheet"
+      ],
+      "best_for": "Set a minimum trip price that accounts for unbillable drive time and overhead.",
+      "howto": [
+        "Enter round-trip travel, on-site time and your hourly labor cost.",
+        "Include truck, materials, overhead and a target margin.",
+        "Compare your current minimum with the sustainable price and export a quote."
+      ],
+      "limitations": "Cost and margin are assumptions, not market rates; taxes and unforeseen scope must be confirmed separately.",
+      "faq_question": "Does the calculator tell me what handymen in my city charge?",
+      "faq_answer": "No. It computes a cost-based minimum using your own assumptions and existing minimum.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": false,
+      "seed_from": "2026-10-23"
+    },
+    {
+      "slug": "rushquote",
+      "name": "RushQuote",
+      "audience": "Freelancers",
+      "category": "freelancers",
+      "emoji": "⚡",
+      "headline": "Freelance Rush Fee Calculator and Quote Generator",
+      "description": "Compare percentage-based rush premiums with overtime cost and deadline compression, then copy a client-ready quote.",
+      "keywords": [
+        "freelance rush fee calculator",
+        "urgent project surcharge calculator",
+        "freelance quick turnaround fee quote",
+        "rush job price premium calculator"
+      ],
+      "best_for": "Quote a last-minute client request without absorbing overtime and opportunity costs.",
+      "howto": [
+        "Enter standard project fee, deadline and requested rush turnaround.",
+        "Compare percentage premium with extra overtime cost at a chosen margin.",
+        "Copy a proposed quote and obtain client approval before committing."
+      ],
+      "limitations": "No automatic client approval, payment, email or scheduling; rush fee and deadline must be agreed in writing.",
+      "faq_question": "Is a 30% rush fee standard?",
+      "faq_answer": "No. Premiums vary; this tool compares pricing approaches rather than prescribing a market standard.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": false,
+      "seed_from": "2026-10-23"
+    },
+    {
+      "slug": "warrantynest",
+      "name": "WarrantyNest",
+      "audience": "Landlords",
+      "category": "landlords",
+      "emoji": "🧾",
+      "headline": "Rental Property Appliance Warranty Expiration Tracker",
+      "description": "Track appliance model, purchase date, warranty expiration and upcoming reminders by rental property; export CSV and calendar ICS.",
+      "keywords": [
+        "rental property appliance warranty tracker",
+        "landlord appliance warranty expiry calendar",
+        "rental appliance serial number inventory spreadsheet",
+        "appliance warranty reminder ICS export"
+      ],
+      "best_for": "Find appliance purchase and warranty details before paying for repairs or missing a claim window.",
+      "howto": [
+        "Record property, appliance, model and installation date.",
+        "Enter the warranty term and preferred reminder lead time.",
+        "Export CSV for backup and an ICS calendar reminder file."
+      ],
+      "limitations": "No server backups or automatic notifications. Warranty eligibility and registration must be checked with the manufacturer.",
+      "faq_question": "Will the app email me before a warranty expires?",
+      "faq_answer": "No. Import the downloaded ICS file into a calendar and verify its event reminders.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": false,
+      "seed_from": "2026-10-23"
+    },
+    {
+      "slug": "fencebid",
+      "name": "FenceBid",
+      "audience": "Contractors",
+      "category": "contractors",
+      "emoji": "🚧",
+      "headline": "Fence Installation Estimate Calculator with Gates",
+      "description": "Estimate multiple fence runs, gates, approximate panel and post quantities, labor and material costs with a CSV worksheet.",
+      "keywords": [
+        "fence installation estimate calculator with gates",
+        "fence post spacing and gate estimate",
+        "multi run fence cost calculator",
+        "fence panels posts labor quote worksheet"
+      ],
+      "best_for": "Small fence contractors who need an editable materials-and-labor estimate rather than a full CAD suite.",
+      "howto": [
+        "Enter each fence run length and gate count.",
+        "Set panel span, material prices, labor and contingency.",
+        "Review approximate quantities and export the itemized estimate."
+      ],
+      "limitations": "Post counts are approximations. Slopes, gates, shared corners, footing dimensions and local building requirements require site verification.",
+      "faq_question": "Does it create a construction-ready fence plan?",
+      "faq_answer": "No. It is a preliminary estimating worksheet, not a structural or code-compliant layout.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": false,
+      "seed_from": "2026-10-24"
+    },
+    {
+      "slug": "mulchcompare",
+      "name": "MulchCompare",
+      "audience": "Contractors",
+      "category": "contractors",
+      "emoji": "🌱",
+      "headline": "Bulk Mulch vs Bags Cost Calculator for Multiple Beds",
+      "description": "Compare mulch bag costs against delivered bulk mulch using multiple beds, depths, bag sizes and local supplier prices.",
+      "keywords": [
+        "bulk mulch vs bags cost calculator",
+        "mulch bag vs bulk delivery calculator",
+        "mulch cubic yards multiple garden beds",
+        "landscape mulch bag count estimate"
+      ],
+      "best_for": "Landscape contractors and homeowners comparing delivered bulk mulch with bagged material.",
+      "howto": [
+        "Enter dimensions and depth for each rectangular bed.",
+        "Add bag size, prices, delivery and allowance.",
+        "Compare order quantities and export a supplier-ready CSV."
+      ],
+      "limitations": "Irregular beds, product compaction, minimum deliveries, taxes and installation costs require local confirmation.",
+      "faq_question": "Does it include bulk delivery fees?",
+      "faq_answer": "Yes. Enter your supplier quote and delivery charge; prices are never pulled live.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": false,
+      "seed_from": "2026-10-24"
+    },
+    {
+      "slug": "weddingflow",
+      "name": "WeddingFlow",
+      "audience": "Photographers",
+      "category": "photographers",
+      "emoji": "📷",
+      "headline": "Wedding Photography Timeline Planner with Coverage Check",
+      "description": "Plan a wedding photography schedule around ceremony time, portraits and reception; flag booked-coverage conflicts and export ICS.",
+      "keywords": [
+        "wedding photography timeline planner",
+        "photographer wedding coverage schedule calculator",
+        "wedding family portrait timeline maker",
+        "wedding photo timeline ICS export"
+      ],
+      "best_for": "Wedding photographers who repeatedly rebuild day-of photo schedules from client questionnaires.",
+      "howto": [
+        "Choose the date, ceremony time and booked coverage hours.",
+        "Adjust portrait, travel and ceremony durations.",
+        "Review coverage conflicts and export a calendar or CSV."
+      ],
+      "limitations": "No real travel, venue, weather, sunset or timezone data; verify imported ICS event times.",
+      "faq_question": "Does it automatically optimize a wedding schedule?",
+      "faq_answer": "No. It creates an editable sequence around ceremony time; final timing must be coordinated with the couple and venue.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": false,
+      "seed_from": "2026-10-24"
+    },
+    {
+      "slug": "turnoverbudget",
+      "name": "TurnoverBudget",
+      "audience": "Landlords",
+      "category": "landlords",
+      "emoji": "🏠",
+      "headline": "Rental Turnover Cost and Vacancy Loss Calculator",
+      "description": "Budget cleaning, repairs and vacancy loss between tenants; compare estimated and actual expenses and export a CSV.",
+      "keywords": [
+        "rental turnover cost calculator",
+        "landlord vacancy loss and repair budget",
+        "rental unit make ready cost worksheet",
+        "tenant turnover expenses calculator"
+      ],
+      "best_for": "Small landlords planning the owner cost of preparing a vacant unit for the next tenant.",
+      "howto": [
+        "Enter monthly rent and expected versus actual vacant days.",
+        "Add estimated and actual cleaning, painting and repair expenses.",
+        "Compare budget variance and export an owner-side expense record."
+      ],
+      "limitations": "Not a deposit deduction statement; tenant chargeability and rental accounting rules vary by jurisdiction.",
+      "faq_question": "Does this calculate security deposit deductions?",
+      "faq_answer": "No. It calculates the owner’s turnover budget, including rent lost during vacancy.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": false,
+      "seed_from": "2026-10-24"
+    },
+    {
+      "slug": "feenet",
+      "name": "FeeNet",
+      "audience": "Freelancers",
+      "category": "freelancers",
+      "emoji": "💳",
+      "headline": "Credit Card Processing Fee and Net Revenue Calculator",
+      "description": "Compare two percentage-plus-fixed payment fee structures, net deposits and gross sales needed to reach a target net.",
+      "keywords": [
+        "credit card processing fee net revenue calculator",
+        "merchant fee calculator percentage plus fixed",
+        "gross up calculator for payment processing fees",
+        "small business payment fee comparison"
+      ],
+      "best_for": "Freelancers and small merchants evaluating processing expenses and net cash receipts.",
+      "howto": [
+        "Enter gross sales, transaction count and target net receipts.",
+        "Compare two editable processing fee structures.",
+        "Export net receipts and reverse gross-revenue calculations."
+      ],
+      "limitations": "Not a live merchant quote or surcharge compliance advice; additional fees and local rules may apply.",
+      "faq_question": "Can it decide if a surcharge is legal?",
+      "faq_answer": "No. It is an internal cost calculator; consult current processor rules and applicable law.",
+      "approved_for_index": false,
+      "evidence_reviewed": false,
+      "qa_verified": false,
+      "seed_from": "2026-10-24"
+    }
+  ]
+}

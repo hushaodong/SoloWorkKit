@@ -1,0 +1,37 @@
+name: Site quality gate
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install HTML test parser
+        run: python -m pip install beautifulsoup4
+      - name: Build safe preview
+        run: python scripts/build.py
+      - name: Validate SEO and index controls
+        run: python scripts/qa.py
+      - name: Validate browser scripts
+        run: |
+          node - <<'JS'
+          const fs=require('fs'),cp=require('child_process');
+          const catalog=JSON.parse(fs.readFileSync('content/catalog.json','utf8'));
+          for(const tool of catalog.tools){
+            const html=fs.readFileSync(`apps/${tool.slug}/index.html`,'utf8');
+            const matches=[...html.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/gi)];
+            const scripts=matches.filter(m=>!(/application\/ld\+json/i.test(m[1]))).map(m=>m[2]).filter(Boolean);
+            if(!scripts.length)throw Error(tool.slug+': no interactive JS');
+            for(const code of scripts){
+              const result=cp.spawnSync('node',['--check','-'],{input:code,encoding:'utf8'});
+              if(result.status)throw Error(tool.slug+'\n'+result.stderr);
+            }
+          }
+          console.log(`${catalog.tools.length} interactive tool scripts syntax OK`);
+          JS
