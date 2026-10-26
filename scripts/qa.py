@@ -2,11 +2,15 @@
 """Build output static SEO and safety QA; run after scripts/build.py."""
 import json,re,sys,xml.etree.ElementTree as ET
 from pathlib import Path
+from urllib.robotparser import RobotFileParser
+from urllib.parse import urlparse,parse_qs
 from bs4 import BeautifulSoup
 ROOT=Path(__file__).resolve().parents[1]
 DIST=ROOT/'dist'
 meta=json.loads((DIST/'build-report.json').read_text())
 errors=[]
+publisher=meta.get('adsense_verification_publisher')
+ad_pages=[]
 def check(condition,msg):
     if not condition:errors.append(msg)
 for f in DIST.rglob('index.html'):
@@ -33,11 +37,29 @@ for f in DIST.rglob('index.html'):
         check(meta['mode']=='production',p+': preview became indexable')
     else:
         check('noindex' in str(soup.find('meta',attrs={'name':'robots'})),p+': draft inadvertently indexable')
-    check('ca-pub-' not in html or meta['ads_enabled'],p+': ad code without approval')
+    verification=soup.find_all('meta',attrs={'name':'google-adsense-account'})
+    check(len(verification)==(1 if publisher else 0),p+': verification tag count mismatch')
+    if publisher:
+        check(all(v.get('content')==publisher and v.parent.name=='head' for v in verification),p+': verification publisher mismatch')
+    ad_scripts=[s for s in soup.find_all('script') if 'googlesyndication.com' in s.get('src','') or 'adsbygoogle' in s.get_text()]
+    if ad_scripts:
+        ad_pages.append(p)
+        check(meta['ads_enabled'] and p in meta['indexable_paths'],p+': ad script without approval or on draft')
+        for s in ad_scripts:
+            src=urlparse(s.get('src',''))
+            check(src.scheme=='https' and src.netloc=='pagead2.googlesyndication.com' and src.path=='/pagead/js/adsbygoogle.js' and parse_qs(src.query).get('client')==[publisher],p+': unexpected ad loader/publisher')
 check((DIST/'sitemap.xml').exists(),'Missing sitemap')
 check((DIST/'robots.txt').exists(),'Missing robots.txt')
 ET.parse(DIST/'sitemap.xml')
-check((DIST/'ads.txt').exists() == meta['ads_enabled'],'ads.txt activation mismatch')
+check(bool(ad_pages)==meta['ads_enabled'],'Ad serving report does not match emitted scripts')
+check((DIST/'ads.txt').exists() == meta.get('ads_txt_enabled',False),'ads.txt activation mismatch')
+if publisher:
+    check((DIST/'ads.txt').read_text()==f'google.com, {publisher.removeprefix("ca-")}, DIRECT, f08c47fec0942fa0\n','ads.txt publisher mismatch')
+robots=RobotFileParser()
+robots.parse((DIST/'robots.txt').read_text().splitlines())
+for agent in ('Mediapartners-Google','Google-Display-Ads-Bot'):
+    check(robots.can_fetch(agent,'/') == (bool(publisher) or meta['mode']=='production'),'Review crawler access mismatch: '+agent)
+check(robots.can_fetch('Googlebot','/') == (meta['mode']=='production'),'Preview search crawler access changed')
 catalog=json.loads((ROOT/'content/catalog.json').read_text(encoding='utf-8'))
 for tool in catalog['tools']:
     slug=tool['slug']

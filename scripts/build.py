@@ -6,6 +6,7 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / 'content/catalog.json'
+MONETIZATION = ROOT / 'content/monetization.json'
 DIST = ROOT / 'dist'
 
 
@@ -35,7 +36,7 @@ def css():
 </style>'''
 
 
-def head_base(title, description, canonical='', robots='noindex,follow', ads=''):
+def head_base(title, description, canonical='', robots='noindex,follow', ads='', verification_publisher=''):
     tags = [f'<meta name="robots" content="{robots}">',
             '<meta name="color-scheme" content="light">',
             '<meta name="theme-color" content="#0b6c6a">']
@@ -43,6 +44,8 @@ def head_base(title, description, canonical='', robots='noindex,follow', ads='')
         tags.extend([f'<link rel="canonical" href="{h(canonical)}">',
                      f'<meta property="og:url" content="{h(canonical)}">',
                      '<meta property="og:type" content="website">'])
+    if verification_publisher:
+        tags.append(f'<meta name="google-adsense-account" content="{h(verification_publisher)}">')
     if ads:
         tags.append(f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={h(ads)}" crossorigin="anonymous"></script>')
     return '\n'.join(tags)
@@ -76,7 +79,7 @@ def guide(tool, siblings):
 </div></section>'''
 
 
-def home_html(catalog, site_url, prod, ads):
+def home_html(catalog, site_url, prod, ads, verification_publisher=''):
     brand = catalog['brand']; title = 'Worklane Tools | Free Browser Tools for Independent Professionals'
     desc = catalog['description']
     cards=[]
@@ -90,7 +93,7 @@ def home_html(catalog, site_url, prod, ads):
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{h(title)}</title><meta name="description" content="{h(desc)}">
 <meta property="og:title" content="{h(title)}"><meta property="og:description" content="{h(desc)}">
-{head_base(title,desc,url_path(site_url,'/'), 'index,follow' if prod else 'noindex,follow',ads)}
+{head_base(title,desc,url_path(site_url,'/'), 'index,follow' if prod else 'noindex,follow',ads,verification_publisher)}
 {css()}{home_style}{schema_tag}</head><body>
 {frame_header(brand)}<main>
 <section class="hero"><div class="wl-container"><div class="eyebrow">Tools built for real work</div>
@@ -108,17 +111,20 @@ q.addEventListener('input',filter);document.getElementById('filters').addEventLi
 </script></body></html>'''
 
 
-def info_page(title, paragraphs, brand, site_url, path, prod, ads=''):
+def info_page(title, paragraphs, brand, site_url, path, prod, ads='', verification_publisher=''):
     body = ''.join(f'<p>{p}</p>' for p in paragraphs)
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{h(title)} | {h(brand)}</title><meta name="description" content="{h(re.sub('<[^>]*>', '', paragraphs[0])[:156])}">
-{head_base(title,paragraphs[0],url_path(site_url,path), 'index,follow' if prod else 'noindex,follow',ads)}
+{head_base(title,paragraphs[0],url_path(site_url,path), 'index,follow' if prod else 'noindex,follow',ads,verification_publisher)}
 {css()}<style>body{{margin:0;background:#f6faf9;font-family:system-ui,sans-serif;line-height:1.7;color:#274454}}.wl-article{{max-width:780px;margin:60px auto 90px;padding:0 20px}}.wl-article h1{{font-size:40px;letter-spacing:-1px}}.wl-article p{{color:#536a78}}.wl-article a{{color:#08766d}}</style></head><body>{frame_header(brand)}
 <main class="wl-article"><h1>{h(title)}</h1>{body}</main>{frame_footer(brand)}</body></html>'''
 
 
-def build(production=False, site_url='', adsense='', ads_approved=False, privacy_ready=False):
+def build(production=False, site_url='', adsense='', ads_approved=False, privacy_ready=False, verification_publisher=None):
     cfg=json.loads(CATALOG.read_text(encoding='utf-8'))
+    if verification_publisher is None:
+        monetization=json.loads(MONETIZATION.read_text(encoding='utf-8')) if MONETIZATION.exists() else {}
+        verification_publisher=monetization.get('adsense_verification_publisher','')
     site_url=site_url.strip().rstrip('/')
     if site_url:
         parsed=urlparse(site_url)
@@ -127,10 +133,15 @@ def build(production=False, site_url='', adsense='', ads_approved=False, privacy
             raise ValueError('SITE_URL must be a real HTTPS origin (no placeholder or path)')
     elif production:
         raise ValueError('Production requires --site-url with a real HTTPS origin')
+    if not isinstance(verification_publisher,str) or (verification_publisher and not re.fullmatch(r'ca-pub-\d{16}',verification_publisher)):
+        raise ValueError('Verification publisher must match ca-pub- followed by 16 digits')
     if adsense and not re.fullmatch(r'ca-pub-\d{16}',adsense):
         raise ValueError('AdSense ID must match ca-pub- followed by 16 digits')
     if adsense and not (production and ads_approved and privacy_ready):
         raise ValueError('AdSense requires --production --ads-approved --privacy-ready; no ads served before review')
+    if adsense and verification_publisher and adsense!=verification_publisher:
+        raise ValueError('Advertising and verification publishers must match')
+    publisher=verification_publisher or adsense
     slugs=[t['slug'] for t in cfg['tools']]
     if len(set(slugs))!=len(slugs) or not all(re.fullmatch(r'[a-z][a-z0-9-]+',s) for s in slugs):
         raise ValueError('Invalid/duplicate slugs')
@@ -138,14 +149,15 @@ def build(production=False, site_url='', adsense='', ads_approved=False, privacy
     DIST.mkdir(parents=True)
     approved_count=sum(bool(t.get('approved_for_index') and t.get('evidence_reviewed') and t.get('qa_verified')) for t in cfg['tools'])
     homepage_indexable=production and approved_count>0
-    (DIST/'index.html').write_text(home_html(cfg,site_url,homepage_indexable,adsense if homepage_indexable else ''),encoding='utf-8')
+    ads_enabled=bool(adsense and homepage_indexable)
+    (DIST/'index.html').write_text(home_html(cfg,site_url,homepage_indexable,adsense if homepage_indexable else '',publisher),encoding='utf-8')
     sitemap=['/'] if homepage_indexable else []
     for t in cfg['tools']:
         dest=DIST/'tools'/t['slug'];dest.mkdir(parents=True,exist_ok=True)
         base=(ROOT/'apps'/t['slug']/'index.html').read_text(encoding='utf-8')
         published=production and t.get('approved_for_index',False) and t.get('evidence_reviewed',False) and t.get('qa_verified',False)
         canonical=url_path(site_url,f'/tools/{t["slug"]}/')
-        meta=head_base(t['headline'],t['description'],canonical,'index,follow' if published else 'noindex,follow',adsense if published else '')
+        meta=head_base(t['headline'],t['description'],canonical,'index,follow' if published else 'noindex,follow',adsense if published else '',publisher)
         base=base.replace('</head>', '\n'+meta+css()+'</head>',1)
         base=base.replace('<body>','<body>'+frame_header(cfg['brand']),1)
         # Attach genuine, static instructions and disclosure; do not replace the tool functionality.
@@ -161,8 +173,10 @@ def build(production=False, site_url='', adsense='', ads_approved=False, privacy
     ]
     ad_notice = (
         'Advertising and cookies: Google AdSense is configured for this site. Third-party vendors, including Google, may use cookies to serve ads based on visits to this and other websites. Learn about ad personalization at <a href="https://adssettings.google.com/">Google Ads Settings</a>. Required region-specific consent and opt-out mechanisms must be implemented and tested before serving ads where applicable.'
-        if adsense else
-        'Analytics and advertising: paid advertising is not enabled in this build. If Google AdSense or analytics are activated later, this policy must be updated to describe actual data collection, cookies, ad personalization and user choices.'
+        if ads_enabled else
+        ('Advertising setup: this site publishes a Google AdSense ownership-verification meta tag and an ads.txt seller record. These static records do not load advertising scripts or serve ads. Advertising is not enabled in this build. Before ads are enabled, this policy and the applicable consent and opt-out controls must be updated and tested.'
+         if publisher else
+         'Analytics and advertising: paid advertising is not enabled in this build. If Google AdSense or analytics are activated later, this policy must be updated to describe actual data collection, cookies, ad personalization and user choices.')
     )
     privacy=[
         'Privacy overview: the current free tools perform their core tasks locally in your browser. We do not run a central account database or intentionally receive your project photos, invoices or trip records through these forms.',
@@ -179,18 +193,21 @@ def build(production=False, site_url='', adsense='', ads_approved=False, privacy
     for slug,title,paras in [('about','About Us',about),('privacy','Privacy Policy',privacy),('terms','Terms & Limitations',terms)]:
         dest=DIST/slug;dest.mkdir(exist_ok=True)
         # Legal templates are available for human review; do not index as marketing pages in the initial release.
-        (dest/'index.html').write_text(info_page(title,paras,cfg['brand'],site_url,f'/{slug}/',False),encoding='utf-8')
+        (dest/'index.html').write_text(info_page(title,paras,cfg['brand'],site_url,f'/{slug}/',False,verification_publisher=publisher),encoding='utf-8')
+    review_crawlers=('User-agent: Mediapartners-Google\nAllow: /\n\nUser-agent: Google-Display-Ads-Bot\nAllow: /\n\n') if publisher else ''
     if production:
         urls=''.join(f'<url><loc>{h(site_url+p)}</loc></url>' for p in sitemap)
         (DIST/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+urls+'</urlset>',encoding='utf-8')
-        (DIST/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: '+site_url+'/sitemap.xml\n',encoding='utf-8')
+        (DIST/'robots.txt').write_text(review_crawlers+'User-agent: *\nAllow: /\nSitemap: '+site_url+'/sitemap.xml\n',encoding='utf-8')
     else:
-        (DIST/'robots.txt').write_text('User-agent: *\nDisallow: /\n',encoding='utf-8')
+        (DIST/'robots.txt').write_text(review_crawlers+'User-agent: *\nDisallow: /\n',encoding='utf-8')
         (DIST/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"/>',encoding='utf-8')
-    if adsense:
-        (DIST/'ads.txt').write_text(f'google.com, {adsense.removeprefix("ca-")}, DIRECT, f08c47fec0942fa0\n',encoding='utf-8')
+    if publisher:
+        (DIST/'ads.txt').write_text(f'google.com, {publisher.removeprefix("ca-")}, DIRECT, f08c47fec0942fa0\n',encoding='utf-8')
     report={'created_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'mode':'production' if production else 'preview',
-            'site_url':site_url or None,'ads_enabled':bool(adsense),'tools_total':len(slugs),
+            'site_url':site_url or None,'ads_enabled':ads_enabled,'tools_total':len(slugs),
+            'adsense_verification_publisher':publisher or None,'ads_txt_enabled':bool(publisher),
+            'adsense_review_crawlers_allowed':bool(publisher),
             'indexable_paths':sitemap, 'draft_paths':[f'/tools/{t["slug"]}/' for t in cfg['tools'] if not (production and t.get('approved_for_index',False) and t.get('evidence_reviewed',False) and t.get('qa_verified',False))],
             'site_map':site_url+'/sitemap.xml' if production else None}
     (DIST/'build-report.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
@@ -202,6 +219,7 @@ if __name__=='__main__':
     p.add_argument('--production',action='store_true')
     p.add_argument('--site-url',default=os.getenv('SITE_URL',''))
     p.add_argument('--adsense-publisher',default=os.getenv('ADSENSE_PUBLISHER',''))
+    p.add_argument('--adsense-verification-publisher',default=os.getenv('ADSENSE_VERIFICATION_PUBLISHER'),help='Ownership meta tag and ads.txt only; defaults to content/monetization.json. Does not enable ads.')
     p.add_argument('--ads-approved',action='store_true',default=os.getenv('ADS_APPROVED')=='1')
     p.add_argument('--privacy-ready',action='store_true',default=os.getenv('PRIVACY_READY')=='1')
-    a=p.parse_args();build(a.production,a.site_url,a.adsense_publisher,a.ads_approved,a.privacy_ready)
+    a=p.parse_args();build(a.production,a.site_url,a.adsense_publisher,a.ads_approved,a.privacy_ready,a.adsense_verification_publisher)

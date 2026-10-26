@@ -1,8 +1,8 @@
 # Worklane Tools — US utility-tool matrix (deployment starter)
 
-A responsive English-language tool directory and five functional browser-based MVPs, with a static site generator, indexation controls, sitemap and robots generation, AdSense activation guard, duplicate-intake registry, and GitHub Actions quality checks.
+A responsive English-language directory of 35 browser tools, with a static site generator, indexation controls, sitemap and robots generation, AdSense verification and activation guards, duplicate-intake registry, and GitHub Actions quality checks.
 
-**Status:** Built and locally tested only. Not published to a public domain. Google Search indexing and AdSense approval have not been performed.
+**Status:** Public preview at https://soloworkkit-hushaodong.pages.dev/ with default noindex. AdSense ownership verification is being connected; ad serving remains disabled and Google approval is pending. See [MONETIZATION.md](MONETIZATION.md) for the actual activation gates.
 
 ## Run locally
 
