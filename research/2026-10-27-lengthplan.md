@@ -65,7 +65,7 @@ Ahrefs 文档接口本次实际返回 `Unknown tool: ahrefs.doc`，未调用付�
 
 默认保持 noindex、空 sitemap、广告脚本关闭；新页暂不开放 SEO 收录。修正旧的 preview robots 禁抓冲突，使爬虫能读取 noindex，依据 [Google 官方说明](https://developers.google.com/search/docs/crawling-indexing/block-indexing)。robots 允许不是批准收录或隐私访问控制。
 
-Cloudflare 继续使用原 main → Pages、构建 `python3 scripts/build.py --site-url https://soloworkkit-hushaodong.pages.dev`、输出 dist。[免费额度](https://developers.cloudflare.com/pages/platform/limits/)当前列 500 builds/月，本次只追加一次部署；实际剩余额度未读取，不宣称无限免费。回滚基点 `3fae3ad98712521721f1f90bcd82d2d75765faef`。任何回滚也需保留其他随后提交，不强推。
+Cloudflare 继续使用原 main → Pages、构建 `python3 scripts/build.py --site-url https://soloworkkit-hushaodong.pages.dev`、输出 dist。[免费额度](https://developers.cloudflare.com/pages/platform/limits/)当前列 500 builds/月；实际剩余额度未读取，不宣称无限免费。首个部署提交 `a497138fb750dd44d5877c22fefa4330da33b3b6` 已实际通过 Cloudflare 及 CI。随后验收发现未知 URL 错误返回首页和 HTTP 200；依据 [Cloudflare 官方路由说明](https://developers.cloudflare.com/pages/configuration/serving-pages/) 补充根目录 `404.html` 和 QA 检查，追加第二次修复部署。回滚基点 `3fae3ad98712521721f1f90bcd82d2d75765faef`。任何回滚也需保留其他随后提交，不强推。
 
 数学测试：150 组独立穷举对照，贪心反例、分数、输入拒绝、锯缝/端头边界、500件材料守恒、CSV公式安全。浏览器：真实单位转换、超长输入、重新计算、真实CSV下载及390px布局；打印按钮未生成实体打印/PDF成品。自动测试不能证明真实现场结果。
 

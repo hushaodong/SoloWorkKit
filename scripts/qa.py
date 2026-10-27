@@ -50,6 +50,12 @@ for f in DIST.rglob('index.html'):
             check(src.scheme=='https' and src.netloc=='pagead2.googlesyndication.com' and src.path=='/pagead/js/adsbygoogle.js' and parse_qs(src.query).get('client')==[publisher],p+': unexpected ad loader/publisher')
 check((DIST/'sitemap.xml').exists(),'Missing sitemap')
 check((DIST/'robots.txt').exists(),'Missing robots.txt')
+not_found=DIST/'404.html'
+check(not_found.is_file(),'Missing root 404.html; Pages may serve unknown URLs as HTTP 200')
+if not_found.is_file():
+    missing=BeautifulSoup(not_found.read_text(encoding='utf-8'),'html.parser')
+    check('noindex' in str(missing.find('meta',attrs={'name':'robots'})),'404 page must remain noindex')
+    check(not missing.find_all('script'),'404 page must not load advertising or interactive scripts')
 ET.parse(DIST/'sitemap.xml')
 check(bool(ad_pages)==meta['ads_enabled'],'Ad serving report does not match emitted scripts')
 check((DIST/'ads.txt').exists() == meta.get('ads_txt_enabled',False),'ads.txt activation mismatch')

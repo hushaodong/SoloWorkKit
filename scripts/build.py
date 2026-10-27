@@ -151,6 +151,11 @@ def build(production=False, site_url='', adsense='', ads_approved=False, privacy
     homepage_indexable=production and approved_count>0
     ads_enabled=bool(adsense and homepage_indexable)
     (DIST/'index.html').write_text(home_html(cfg,site_url,homepage_indexable,adsense if homepage_indexable else '',publisher),encoding='utf-8')
+    # A root 404.html prevents Pages from serving the homepage with HTTP 200
+    # for every unknown route under its default single-page-app fallback.
+    (DIST/'404.html').write_text(info_page('Page not found',
+        ['This page could not be found. <a href="/">Browse the available tools</a>.'],
+        cfg['brand'],site_url,'/404.html',False,verification_publisher=publisher),encoding='utf-8')
     sitemap=['/'] if homepage_indexable else []
     for t in cfg['tools']:
         dest=DIST/'tools'/t['slug'];dest.mkdir(parents=True,exist_ok=True)
