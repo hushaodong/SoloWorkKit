@@ -958,6 +958,35 @@
       "evidence_reviewed": false,
       "qa_verified": false,
       "seed_from": "2026-10-24"
+    },
+    {
+      "slug": "lengthplan",
+      "name": "Linear Cut Planner",
+      "audience": "Contractors & makers",
+      "category": "contractors",
+      "emoji": "🪚",
+      "headline": "Linear Cut List Planner with Kerf & Offcut Totals",
+      "description": "Paste timber, pipe or bar lengths and quantities. Plan straight cuts with saw kerf, end trim, reusable offcuts, real unit conversion and CSV export.",
+      "keywords": [
+        "linear cut list planner",
+        "linear cutting list calculator",
+        "timber cutting optimiser with kerf",
+        "lumber cut list calculator",
+        "pipe cutting stock planner"
+      ],
+      "best_for": "Contractors, makers and small workshops planning one type of straight stock at a time.",
+      "howto": [
+        "Measure actual stock length and set inches or millimetres, saw kerf, end trim and a reusable-offcut threshold.",
+        "Paste rows of finished length, quantity and optional label. Choose Plan my cuts and review every stock layout and material-balance total.",
+        "Export the CSV or print the plan. Independently verify stock, defects and measurements before cutting."
+      ],
+      "limitations": "One material and stock size per job; up to 500 pieces; straight crosscuts only. Conservatively reserves one full kerf per piece, including the last. Bounded search and heuristics do not always prove the minimum. No structural, machinery or supplier advice. Inputs are not saved.",
+      "faq_question": "Does changing inches to millimetres convert my measurements?",
+      "faq_answer": "Yes. Valid stock, kerf, trim, threshold and part measurements are converted together. Invalid input leaves the unit unchanged. Recalculate and verify before cutting.",
+      "approved_for_index": false,
+      "evidence_reviewed": true,
+      "qa_verified": true,
+      "seed_from": "2026-10-27"
     }
   ]
 }

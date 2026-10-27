@@ -59,7 +59,7 @@ robots=RobotFileParser()
 robots.parse((DIST/'robots.txt').read_text().splitlines())
 for agent in ('Mediapartners-Google','Google-Display-Ads-Bot'):
     check(robots.can_fetch(agent,'/') == (bool(publisher) or meta['mode']=='production'),'Review crawler access mismatch: '+agent)
-check(robots.can_fetch('Googlebot','/') == (meta['mode']=='production'),'Preview search crawler access changed')
+check(robots.can_fetch('Googlebot','/'),'Search crawler cannot read page indexing directives')
 catalog=json.loads((ROOT/'content/catalog.json').read_text(encoding='utf-8'))
 for tool in catalog['tools']:
     slug=tool['slug']

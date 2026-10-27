@@ -16,6 +16,8 @@ jobs:
         run: python -m pip install beautifulsoup4
       - name: Verify AdSense setup cannot accidentally start serving ads
         run: python scripts/test_monetization.py
+      - name: Verify linear cutting arithmetic and packing
+        run: node scripts/test_lengthplan.cjs
       - name: Build safe preview
         run: python scripts/build.py
       - name: Validate SEO and index controls

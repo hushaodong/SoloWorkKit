@@ -45,7 +45,7 @@ class MonetizationBuildTests(unittest.TestCase):
         self.assertFalse(report['ads_enabled'])
         self.assertEqual(report['indexable_paths'],[])
         pages=list(self.out.rglob('index.html'))
-        self.assertEqual(len(pages),39)
+        self.assertEqual(len(pages),len(self.catalog['tools'])+4)
         for page in pages:
             soup=BeautifulSoup(page.read_text(),'html.parser')
             self.assertEqual(soup.find('meta',attrs={'name':'google-adsense-account'})['content'],PUBLISHER)
@@ -56,7 +56,7 @@ class MonetizationBuildTests(unittest.TestCase):
         robots.parse((self.out/'robots.txt').read_text().splitlines())
         self.assertTrue(robots.can_fetch('Mediapartners-Google','/tools/punchlite/'))
         self.assertTrue(robots.can_fetch('Google-Display-Ads-Bot','/'))
-        self.assertFalse(robots.can_fetch('Googlebot','/'))
+        self.assertTrue(robots.can_fetch('Googlebot','/'))
 
     def test_explicit_empty_verification_removes_public_binding(self):
         self.render(verification_publisher='')

@@ -200,7 +200,9 @@ def build(production=False, site_url='', adsense='', ads_approved=False, privacy
         (DIST/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+urls+'</urlset>',encoding='utf-8')
         (DIST/'robots.txt').write_text(review_crawlers+'User-agent: *\nAllow: /\nSitemap: '+site_url+'/sitemap.xml\n',encoding='utf-8')
     else:
-        (DIST/'robots.txt').write_text(review_crawlers+'User-agent: *\nDisallow: /\n',encoding='utf-8')
+        # Public preview pages must be crawlable for their noindex directives to be read.
+        # Private content requires authentication; robots.txt is never access control.
+        (DIST/'robots.txt').write_text(review_crawlers+'User-agent: *\nAllow: /\n',encoding='utf-8')
         (DIST/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"/>',encoding='utf-8')
     if publisher:
         (DIST/'ads.txt').write_text(f'google.com, {publisher.removeprefix("ca-")}, DIRECT, f08c47fec0942fa0\n',encoding='utf-8')

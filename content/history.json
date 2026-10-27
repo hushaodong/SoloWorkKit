@@ -211,6 +211,14 @@
       "date": "2026-10-24",
       "problem": "merchant card payment fee structure net receipts comparison",
       "audience": "freelancers"
+    },
+    {
+      "slug": "lengthplan",
+      "date": "2026-10-27",
+      "problem": "one dimensional stock lengths saw kerf cutting plan and offcut material balance",
+      "audience": "contractors and makers",
+      "evidence_url": "https://www.reddit.com/r/woodworking/comments/12td2t6/linear_cut_optimizer/",
+      "research_record": "research/2026-10-27-lengthplan.md"
     }
   ]
 }

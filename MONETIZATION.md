@@ -12,7 +12,7 @@ The existing Cloudflare build command remains:
 python3 scripts/build.py --site-url https://soloworkkit-hushaodong.pages.dev
 ```
 
-This publishes the `google-adsense-account` meta tag on every page and the exact Google seller record at `/ads.txt`. It permits `Mediapartners-Google` and `Google-Display-Ads-Bot` to crawl for verification. It does **not** load the advertising JavaScript, request ads, add ad cookies, or change preview `noindex` tags. General search crawling remains disallowed in preview. These static records alone cannot earn revenue.
+This publishes the `google-adsense-account` meta tag on every page and the exact Google seller record at `/ads.txt`. It permits `Mediapartners-Google` and `Google-Display-Ads-Bot` to crawl for verification. It does **not** load the advertising JavaScript, request ads, add ad cookies, or remove preview `noindex` tags. As of 2026-10-27, public preview crawling is permitted so search engines can read those noindex tags; the preview sitemap remains empty. These static records alone cannot earn revenue.
 
 Run `python scripts/test_monetization.py`, then the normal build and `python scripts/qa.py`. The build report distinguishes ownership verification, ads.txt, and actual emitted ad loaders.
 
