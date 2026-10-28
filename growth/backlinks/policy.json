@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "owner": "hushaodong",
+  "site": "https://soloworkkit-hushaodong.pages.dev/",
+  "authorization": "User requested automatic backlink work on 2026-10-28. Routine factual product submissions are permitted within this allowlist, subject to each platform's current rules and existing account authority.",
+  "budget": 0,
+  "max_new_submissions_per_run": 1,
+  "channels": [
+    {
+      "id": "owned-github",
+      "url": "https://github.com/hushaodong/SoloWorkKit",
+      "automatic": true,
+      "scope": "Maintain the existing repository About website and useful README links. No new repositories or link-farm pages.",
+      "type": "owned_profile_link",
+      "current_state": "Official website link added and read back on 2026-10-28; do not resubmit it."
+    },
+    {
+      "id": "alternativeto",
+      "url": "https://alternativeto.net/",
+      "rules": "https://alternativeto.net/faq/",
+      "automatic": true,
+      "scope": "One accurate product entry or permitted update, after verifying an existing authenticated account and current platform automation rules. Put the URL in the official website field, not inside the description.",
+      "type": "independent_directory_review",
+      "account_status": "not_verified",
+      "review_status": "not_submitted"
+    },
+    {
+      "id": "producthunt",
+      "url": "https://www.producthunt.com/",
+      "rules": "https://www.producthunt.com/launch/how-product-hunt-works",
+      "automatic": true,
+      "scope": "One prepared launch or a genuine substantive update using the operator's existing authorized personal account, when current platform rules permit automation. Check duplicates and relaunch rules first.",
+      "type": "independent_product_launch",
+      "account_status": "not_verified",
+      "review_status": "not_submitted"
+    }
+  ],
+  "always_user_action": ["new account creation or binding terms", "new sensitive access or OAuth scope", "CAPTCHA", "identity details or credentials", "payments, paid trials and upgrades"],
+  "prohibited": ["bulk unrelated directory submissions", "automated comment/forum spam", "fake reviews or votes", "paid ranking links", "link exchanges required for ranking credit", "unsolicited email or private messages", "bypassing platform automation restrictions", "claiming submission equals approval or indexing"]
+}

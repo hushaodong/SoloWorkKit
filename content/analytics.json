@@ -1,0 +1,12 @@
+{
+  "provider": "umami",
+  "enabled": false,
+  "website_id": "",
+  "script_url": "https://cloud.umami.is/script.js",
+  "data_region": "",
+  "operator_name": "hushaodong / SoloWorkKit",
+  "privacy_contact": "ssssmr.hu@gmail.com",
+  "privacy_ready": false,
+  "consent_required": true,
+  "note": "Activate only after the real free Hobby account, region, website ID, privacy contact and consent checks are verified. No paid trial."
+}

@@ -18,6 +18,10 @@ jobs:
         run: python scripts/test_monetization.py
       - name: Verify linear cutting arithmetic and packing
         run: node scripts/test_lengthplan.cjs
+      - name: Verify optional analytics consent and minimal payloads
+        run: |
+          python scripts/test_analytics.py
+          node scripts/test_analytics.cjs
       - name: Build safe preview
         run: python scripts/build.py
       - name: Validate SEO and index controls

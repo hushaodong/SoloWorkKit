@@ -4,6 +4,10 @@ A responsive English-language directory of 36 browser tools, with a static site 
 
 **Status:** Public preview at https://soloworkkit-hushaodong.pages.dev/ with default noindex. AdSense ownership verification is being connected; ad serving remains disabled and Google approval is pending. See [MONETIZATION.md](MONETIZATION.md) for the actual activation gates.
 
+Try the [Linear Cut Planner](https://soloworkkit-hushaodong.pages.dev/tools/lengthplan/) to arrange straight stock with kerf, trim and reusable offcuts. The tools are free public previews; verify outputs before relying on them.
+
+Optional consent-based usage measurement is documented in [ANALYTICS.md](ANALYTICS.md). Collection remains disabled until the real free account and privacy prerequisites are verified.
+
 ## Run locally
 
 ```sh

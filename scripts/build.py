@@ -7,12 +7,40 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / 'content/catalog.json'
 MONETIZATION = ROOT / 'content/monetization.json'
+ANALYTICS = ROOT / 'content/analytics.json'
 DIST = ROOT / 'dist'
 
 
 def h(v): return html.escape(str(v), quote=True)
 
 def url_path(host, path): return host.rstrip('/') + path if host else ''
+
+
+def analytics_config(site_url, override=None):
+    c = override if override is not None else (json.loads(ANALYTICS.read_text()) if ANALYTICS.exists() else {})
+    enabled = c.get('enabled', False)
+    if not isinstance(enabled, bool): raise ValueError('Analytics enabled must be boolean')
+    if enabled:
+        if c.get('provider') != 'umami' or c.get('consent_required') is not True or c.get('privacy_ready') is not True:
+            raise ValueError('Analytics requires reviewed Umami configuration and explicit consent')
+        if not re.fullmatch(r'[a-fA-F0-9]{8}(?:-[a-fA-F0-9]{4}){3}-[a-fA-F0-9]{12}', c.get('website_id','')):
+            raise ValueError('Analytics requires the real website UUID')
+        if c.get('script_url') != 'https://cloud.umami.is/script.js':
+            raise ValueError('Analytics script must be the reviewed Umami Cloud endpoint')
+        if c.get('data_region') not in ('EU','US') or not c.get('operator_name','').strip():
+            raise ValueError('Analytics requires verified storage region and operator')
+        if not re.fullmatch(r'[^\s<>@]+@[^\s<>@]+\.[^\s<>@]+', c.get('privacy_contact','')):
+            raise ValueError('Analytics requires a public privacy contact')
+    return {**c, 'configured': enabled, 'enabled': enabled and bool(site_url),
+            'hostname': urlparse(site_url).hostname if site_url else ''}
+
+
+def analytics_markup(c, path, title, tool, html_source):
+    actions = sorted(set(re.findall(r'<button\b[^>]*\bid=[\"\']([A-Za-z][\w-]{0,63})[\"\']', html_source))) if tool else []
+    public = {k:c[k] for k in ('enabled','website_id','script_url','hostname')}
+    public.update(path=path, title=title, tool=tool, actions=actions)
+    data = json.dumps(public, ensure_ascii=False).replace('<','\\u003c')
+    return '<script id="wl-analytics-config" type="application/json">'+data+'</script>\n<script defer src="/assets/usage-analytics.js"></script>'
 
 def css():
     return '''<style id="worklane-ui">
@@ -133,6 +161,7 @@ def build(production=False, site_url='', adsense='', ads_approved=False, privacy
             raise ValueError('SITE_URL must be a real HTTPS origin (no placeholder or path)')
     elif production:
         raise ValueError('Production requires --site-url with a real HTTPS origin')
+    analytics=analytics_config(site_url)
     if not isinstance(verification_publisher,str) or (verification_publisher and not re.fullmatch(r'ca-pub-\d{16}',verification_publisher)):
         raise ValueError('Verification publisher must match ca-pub- followed by 16 digits')
     if adsense and not re.fullmatch(r'ca-pub-\d{16}',adsense):
@@ -189,6 +218,14 @@ def build(production=False, site_url='', adsense='', ads_approved=False, privacy
         ad_notice,
         'Never enter highly sensitive information into prototypes. Review privacy disclosures, legal obligations and contact information before taking this project live as a commercial service.'
     ]
+    if analytics['enabled']:
+        privacy += [
+            'Optional usage analytics: only after you accept, we load Umami Cloud to measure page paths, referring site origins and fixed event names such as tool_start, tool_complete, tool_error and export_generated. Button actions record a reviewed static identifier. Completion is instrumented for Linear Cut Planner; an action click on other tools is not proof of successful completion.',
+            'We do not send form values, photographs, filenames, customer details, URL search parameters or fragments. The analytics service still processes connection information (including IP address and browser headers) to receive and derive aggregate visit information. Analytics is optional; rejecting it does not affect tools.',
+            'The selected Umami Cloud analytics storage region is '+h(analytics['data_region'])+'. Cloud retention is six months on the free Hobby plan; CDN, security and operational processing can involve other regions. See <a href="https://umami.is/privacy">Umami privacy information</a>. No session replay or advertising personalization is enabled.',
+            'Use Analytics choices in the footer to reject or withdraw. We save only that choice and its timestamp on your device for up to 180 days. Withdrawal stops future events; it does not automatically erase previously collected records. Browser privacy signals keep analytics off. Consent-based statistics omit visitors who decline or block collection and are not a complete count of all traffic.',
+            'Operator: '+h(analytics['operator_name'])+'. For privacy questions or rights requests, contact <a href="mailto:'+h(analytics['privacy_contact'])+'">'+h(analytics['privacy_contact'])+'</a>. Do not post personal records in public repository issues.'
+        ]
     terms=[
         'These free tools are provided as prototypes, on an as-is and as-available basis, without guaranteed accuracy, retention, continuity or availability.',
         'You are responsible for checking the accuracy, completeness and suitability of generated reports, invoice reminders, estimates and other records before relying on them.',
@@ -211,8 +248,22 @@ def build(production=False, site_url='', adsense='', ads_approved=False, privacy
         (DIST/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"/>',encoding='utf-8')
     if publisher:
         (DIST/'ads.txt').write_text(f'google.com, {publisher.removeprefix("ca-")}, DIRECT, f08c47fec0942fa0\n',encoding='utf-8')
+    if analytics['enabled']:
+        (DIST/'assets').mkdir(exist_ok=True)
+        shutil.copyfile(ROOT/'assets/usage-analytics.js', DIST/'assets/usage-analytics.js')
+        by_path={f'/tools/{t["slug"]}/':t for t in cfg['tools']}
+        for page in DIST.rglob('index.html'):
+            relative=page.relative_to(DIST).parent.as_posix()
+            path='/' if relative=='.' else '/'+relative+'/'
+            tool=by_path.get(path)
+            source=page.read_text(encoding='utf-8')
+            source=source.replace('No analytics, advertising pixels, server-side storage, or account system in this MVP.', 'Optional usage analytics runs only after your consent. No advertising pixels, server-side storage of form records, or account system is used.')
+            source=source.replace('No account, uploads, advertising scripts or analytics are used by this tool.', 'No account, uploads or advertising scripts are used by this tool. Optional usage analytics runs only after your consent.')
+            source=source.replace('</body>', analytics_markup(analytics,path,tool['name'] if tool else cfg['brand']+' '+path,tool['slug'] if tool else '',source)+'</body>',1)
+            page.write_text(source,encoding='utf-8')
     report={'created_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'mode':'production' if production else 'preview',
             'site_url':site_url or None,'ads_enabled':ads_enabled,'tools_total':len(slugs),
+            'analytics_enabled':analytics['enabled'],'analytics_configured':analytics['configured'],
             'adsense_verification_publisher':publisher or None,'ads_txt_enabled':bool(publisher),
             'adsense_review_crawlers_allowed':bool(publisher),
             'indexable_paths':sitemap, 'draft_paths':[f'/tools/{t["slug"]}/' for t in cfg['tools'] if not (production and t.get('approved_for_index',False) and t.get('evidence_reviewed',False) and t.get('qa_verified',False))],
