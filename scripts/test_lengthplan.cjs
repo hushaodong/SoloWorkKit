@@ -19,4 +19,11 @@ let seed=27;const random=n=>{seed=(seed*1664525+1013904223)>>>0;return seed%n;};
 for(let t=0;t<150;t++){const kerf=random(3),trim=random(2),capacity=30-2*trim,n=2+random(8),lengths=Array.from({length:n},()=>1+random(capacity-kerf));r=pack(lengths,30,kerf,trim);assert.equal(r.bins.length,brute(lengths.map(x=>x+kerf),capacity));assert.equal(r.finished+r.reservedKerf+r.trimLoss+r.offcut,r.stock*r.bins.length);assert.equal(new Set(r.bins.flatMap(b=>b.parts.map(p=>p.id))).size,n);assert.ok(r.bins.every(b=>b.rem>=0));assert.equal(r.proved,true);}
 r=pack(Array.from({length:500},(_,i)=>1+i%13),100,1,2);assert.equal(r.count,500);assert.ok(r.bins.every(b=>b.rem>=0));assert.equal(r.finished+r.reservedKerf+r.trimLoss+r.offcut,r.stock*r.bins.length);
 assert.equal(P.csvCell('=1+1'),'"\'=1+1"');assert.equal(P.csvCell('hello, "saw"'),'"hello, ""saw"""');
-console.log('PASS: fractions, headers/CSV, input rejection, kerf/trim boundaries, exact-search counterexample, 150 oracle comparisons, 500-piece conservation and CSV formula safety.');
+// Report settings must remain understandable after the input form is hidden in print.
+r=pack([762,762,762,762,609.6,609.6],2438.4,3.175,6.35,304.8);r.price=24.5;r.currency='GBP';
+let settings=Object.fromEntries(P.settingsRows(r,'in'));
+assert.equal(settings['Stock length (each)'],'96 in');assert.equal(settings['Reserved kerf (per piece)'],'0.125 in');assert.equal(settings['End trim (each end)'],'0.25 in');assert.equal(settings['Keep offcuts at least'],'12 in');assert.equal(settings['Quoted stock cost'],'49.00 GBP');
+settings=Object.fromEntries(P.settingsRows(r,'mm'));assert.equal(settings['Stock length (each)'],'2438.4 mm');assert.equal(settings['End trim (each end)'],'6.35 mm');
+const report=P.csvRows(r,'in'),totals=Object.fromEntries(report.filter(row=>row.length===2));assert.equal(totals['End trim'],'1 in');assert.equal(totals['Offcuts'],'22.25 in');assert.equal(totals['User-entered price per stock'],'24.5');assert.equal(report.filter(row=>row.length===6&&typeof row[0]==='number').length,6);
+r.price=0;assert.equal(Object.fromEntries(P.settingsRows(r,'in'))['Quoted stock cost'],'Not entered');
+console.log('PASS: fractions, input/kerf/trim boundaries, 150 independent oracle comparisons, 500-piece conservation, CSV safety and complete report settings/costs in both units.');
