@@ -1,3 +1,7 @@
+> Eligibility update, 2026-10-29: Do not submit the current Worklane Tools collection to AlternativeTo. Its current FAQ explicitly declines simple online tools and collections of such tools. Retain the draft for review only if the product or its policy changes substantially; do not reframe the product inaccurately.
+>
+> Product Hunt: the current browser session is signed out, and permission for the proposed automated submission method is not established under its terms. Keep this as a factual draft for a personal submission; do not automate submission until platform permission and account authority are verified.
+
 # Worklane Tools / SoloWorkKit: factual submission kit
 
 Status: functional public preview, 36 tools, free core features. Website pages remain noindex pending page-by-page release review. Do not claim rankings, revenue, formal legal certification, an open-source license, account sync, paid subscriptions or running ads.

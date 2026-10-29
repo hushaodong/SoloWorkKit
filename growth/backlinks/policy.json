@@ -18,23 +18,43 @@
       "id": "alternativeto",
       "url": "https://alternativeto.net/",
       "rules": "https://alternativeto.net/faq/",
-      "automatic": true,
-      "scope": "One accurate product entry or permitted update, after verifying an existing authenticated account and current platform automation rules. Put the URL in the official website field, not inside the description.",
+      "automatic": false,
+      "scope": "Do not submit the current collection. The official FAQ explicitly declines simple online tools and collections thereof. Reconsider only after a material product or policy change, with truthful eligibility verification.",
       "type": "independent_directory_review",
-      "account_status": "not_verified",
-      "review_status": "not_submitted"
+      "account_status": "not_signed_in",
+      "review_status": "not_submitted",
+      "eligibility_state": "ineligible_under_current_faq",
+      "eligibility_source": "https://alternativeto.net/faq/",
+      "rules_checked_at": "2026-10-29"
     },
     {
       "id": "producthunt",
       "url": "https://www.producthunt.com/",
       "rules": "https://www.producthunt.com/launch/how-product-hunt-works",
-      "automatic": true,
-      "scope": "One prepared launch or a genuine substantive update using the operator's existing authorized personal account, when current platform rules permit automation. Check duplicates and relaunch rules first.",
+      "automatic": false,
+      "scope": "Research and prepare a truthful personal launch. Automatic submission remains on hold until current platform rules explicitly permit the contemplated automation and an authorized existing account is available. The user may decide whether to post personally.",
       "type": "independent_product_launch",
-      "account_status": "not_verified",
-      "review_status": "not_submitted"
+      "account_status": "not_signed_in",
+      "review_status": "not_submitted",
+      "automation_permission": "unknown_not_verified",
+      "rules_checked_at": "2026-10-29"
     }
   ],
-  "always_user_action": ["new account creation or binding terms", "new sensitive access or OAuth scope", "CAPTCHA", "identity details or credentials", "payments, paid trials and upgrades"],
-  "prohibited": ["bulk unrelated directory submissions", "automated comment/forum spam", "fake reviews or votes", "paid ranking links", "link exchanges required for ranking credit", "unsolicited email or private messages", "bypassing platform automation restrictions", "claiming submission equals approval or indexing"]
+  "always_user_action": [
+    "new account creation or binding terms",
+    "new sensitive access or OAuth scope",
+    "CAPTCHA",
+    "identity details or credentials",
+    "payments, paid trials and upgrades"
+  ],
+  "prohibited": [
+    "bulk unrelated directory submissions",
+    "automated comment/forum spam",
+    "fake reviews or votes",
+    "paid ranking links",
+    "link exchanges required for ranking credit",
+    "unsolicited email or private messages",
+    "bypassing platform automation restrictions",
+    "claiming submission equals approval or indexing"
+  ]
 }
