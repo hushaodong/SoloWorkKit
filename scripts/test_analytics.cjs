@@ -6,6 +6,7 @@ assert.equal(A.referral('https://www.google.com/search?q=private#secret'),'https
 assert.equal(A.referral('javascript:alert(1)'),'');
 const p=A.payload(config,'tool_start','https://example.com/customer?email=private');
 assert.equal(p.referrer,'https://example.com');assert.equal(p.url,'/tools/lengthplan/');assert.equal(p.data,undefined);assert.equal(p.name,'tool_start');
+assert.equal(A.payload({...config,internal_test:true},'tool_start','').tag,'internal-test');assert.equal(p.tag,undefined);
 assert.equal(A.choice('{bad',1000),null);assert.equal(A.choice(JSON.stringify({v:1,value:'granted',at:1001}),1000),null);assert.equal(A.choice(JSON.stringify({v:1,value:'granted',at:0}),180*86400000),null);
 function harness({gpc=false,stored=null,hostname=config.hostname}={}){
  const nodes={},docEvents={},winEvents={},scripts=[],records=[];let saved=stored;
@@ -21,7 +22,7 @@ function harness({gpc=false,stored=null,hostname=config.hostname}={}){
  const node=new Element();node.textContent=JSON.stringify(config);nodes['wl-analytics-config']=node;
  const window={addEventListener:(n,f)=>winEvents[n]=f};
  const document={head:new Element('head'),body:new Element('body'),referrer:'https://www.google.com/search?q=private',getElementById:id=>nodes[id],createElement:tag=>new Element(tag),querySelector:()=>null,addEventListener:(n,f)=>docEvents[n]=f};
- const context={document,window,location:{hostname},navigator:{globalPrivacyControl:gpc},localStorage:{getItem:()=>saved,setItem:(k,v)=>saved=v},URL,Date,Promise,Error,JSON};
+ const context={document,window,location:{hostname,search:''},navigator:{globalPrivacyControl:gpc},localStorage:{getItem:()=>saved,setItem:(k,v)=>saved=v},URL,URLSearchParams,Date,Promise,Error,JSON};
  vm.runInNewContext(source,context);
  const input=new Element('input');input.value='SECRET CUSTOMER DATA';
  const button=new Element('button','calculate');button.closest=()=>button;

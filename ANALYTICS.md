@@ -24,3 +24,5 @@ Run `python scripts/test_analytics.py`, `node scripts/test_analytics.cjs`, the n
 Retain a record of the actual account plan/region, website ID, data flow, dashboard URL and test timestamps. Keep the dashboard private. The free plan does not include API/MCP access; use the dashboard or permitted export. Do not buy an upgrade for scheduled reporting. Retention and event limits must be monitored in the actual account.
 
 These are consented observations only. Pageviews, unique visitors, visits, sessions, referrer traffic and GSC clicks have different definitions. Search-referrer visits do not by themselves verify the portfolio's 10,000 organic sessions target. Staff/test traffic and bot filters must be documented before claiming that target.
+
+For explicit staff verification, open a page with `?analytics_test=1`. Only the fixed `internal-test` tag is emitted; the query string itself is omitted. Exclude that tag when reporting real acquisition and usage. This is a reporting label, not bot detection or an account-wide staff filter. Other staff browsers should reject analytics or use their own documented exclusion setting.

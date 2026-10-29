@@ -17,6 +17,7 @@
     // Explicit fields only: never inherit the SDK's full URL, hash or document title.
     const p = { website: c.website_id, hostname: c.hostname, url: c.path,
       title: c.title, referrer: referral(referrer) };
+    if (c.internal_test) p.tag = 'internal-test';
     if (name) p.name = name;
     return p;
   }
@@ -27,6 +28,7 @@
   let c;
   try { c = JSON.parse(node.textContent); } catch (_) { return; }
   if (!c.enabled || location.hostname !== c.hostname) return;
+  c.internal_test = new URLSearchParams(location.search).get('analytics_test') === '1';
   let granted = false, started = false, pageSent = false, sent = 0, sdk = null;
   const blocked = () => navigator.globalPrivacyControl === true || navigator.doNotTrack === '1';
   const read = () => { try { return choice(localStorage.getItem(CHOICE_KEY), Date.now()); } catch (_) { return null; } };
