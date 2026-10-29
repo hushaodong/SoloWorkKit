@@ -111,6 +111,9 @@ def guide(tool, siblings):
 
 def home_html(catalog, site_url, prod, ads, verification_publisher=''):
     brand = catalog['brand']; title = 'Worklane Tools | Free Browser Tools for Independent Professionals'
+    # Search Console verification is emitted only for the verified website origin.
+    search_console = ('<meta name="google-site-verification" content="qoPQ-a6HOozcdyORlQ0FS6jBi3qim1m95tmBo5zVzzY">'
+        if site_url == 'https://soloworkkit-hushaodong.pages.dev' else '')
     desc = catalog['description']
     cards=[]
     for t in catalog['tools']:
@@ -124,6 +127,7 @@ def home_html(catalog, site_url, prod, ads, verification_publisher=''):
 <title>{h(title)}</title><meta name="description" content="{h(desc)}">
 <meta property="og:title" content="{h(title)}"><meta property="og:description" content="{h(desc)}">
 {head_base(title,desc,url_path(site_url,'/'), 'index,follow' if prod else 'noindex,follow',ads,verification_publisher)}
+{search_console}
 {css()}{home_style}{schema_tag}</head><body>
 {frame_header(brand)}<main>
 <section class="hero"><div class="wl-container"><div class="eyebrow">Tools built for real work</div>
