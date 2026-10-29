@@ -1,12 +1,13 @@
 {
   "provider": "umami",
-  "enabled": false,
-  "website_id": "",
+  "enabled": true,
+  "website_id": "cf650296-5f24-475d-8f25-650e9bc2e7ae",
   "script_url": "https://cloud.umami.is/script.js",
-  "data_region": "",
+  "site_hostname": "soloworkkit-hushaodong.pages.dev",
+  "data_region": "US",
   "operator_name": "hushaodong / SoloWorkKit",
   "privacy_contact": "ssssmr.hu@gmail.com",
-  "privacy_ready": false,
+  "privacy_ready": true,
   "consent_required": true,
-  "note": "Activate only after the real free Hobby account, region, website ID, privacy contact and consent checks are verified. No paid trial."
+  "note": "Verified 2026-10-28: Hobby $0/month, 100K events, US (Oregon). Website UUID read from real dashboard. Explicit consent and reviewed public privacy contact required. No paid trial or upgrade."
 }

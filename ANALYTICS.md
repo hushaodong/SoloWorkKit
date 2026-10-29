@@ -2,7 +2,7 @@
 
 The integration targets the Umami Cloud **Hobby** plan: one site and 100,000 monthly events, with six months of analytics retention, as checked on 2026-10-28. Event properties also consume quota. Do not start a paid trial or upgrade. Current pricing: <https://umami.is/pricing>.
 
-The checked-in configuration is **disabled**. It does not collect data merely because this code exists. Activation requires the real website UUID, verified storage region, a public operator privacy contact, and a completed review in `content/analytics.json`. A missing or invalid prerequisite fails the build. The service account and its terms must be handled by the user. Public website IDs are not account secrets; never commit account credentials or API keys.
+The real Hobby account and website were verified on 2026-10-28. The selected storage region is **US (Oregon)** and the website is `soloworkkit-hushaodong.pages.dev`. `content/analytics.json` is configured for consent-based collection on that hostname only. The user confirmed the public privacy contact. A missing or invalid activation prerequisite fails the build; a build without the reviewed origin does not emit tracking. Public website IDs are not account secrets; never commit credentials or API keys.
 
 When enabled, the build attaches a first-party consent controller to the 40 normal HTML routes. It loads the Umami SDK only after a visitor accepts. Rejection and withdrawal stop future events. GPC/DNT signals keep collection off. A timestamped consent choice is the only new localStorage item and expires after 180 days; failure to save the choice does not prevent using any tool.
 

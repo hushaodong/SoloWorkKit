@@ -8,6 +8,7 @@ class AnalyticsConfigTest(unittest.TestCase):
     def valid(self):
         return dict(enabled=True, provider='umami', consent_required=True, privacy_ready=True,
             website_id='12345678-1234-1234-1234-123456789abc',script_url='https://cloud.umami.is/script.js',
+            site_hostname='soloworkkit-hushaodong.pages.dev',
             data_region='EU',operator_name='Test fixture',privacy_contact='fixture@example.test')
     def test_disabled_is_inert(self):
         self.assertFalse(analytics_config('https://soloworkkit-hushaodong.pages.dev',{'enabled':False})['enabled'])
@@ -18,6 +19,7 @@ class AnalyticsConfigTest(unittest.TestCase):
                 with self.assertRaises(ValueError):analytics_config('https://soloworkkit-hushaodong.pages.dev',cfg)
     def test_no_origin_stays_off(self):
         self.assertFalse(analytics_config('',self.valid())['enabled'])
+        self.assertFalse(analytics_config('https://different.example.test',self.valid())['enabled'])
     def test_markup_has_only_reviewed_actions(self):
         cfg=analytics_config('https://soloworkkit-hushaodong.pages.dev',self.valid())
         markup=analytics_markup(cfg,'/tools/lengthplan/','Planner','lengthplan','<button id="calculate">Go</button><input value="PRIVATE"><button>Unknown</button>')

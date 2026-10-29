@@ -6,7 +6,7 @@ A responsive English-language directory of 36 browser tools, with a static site 
 
 Try the [Linear Cut Planner](https://soloworkkit-hushaodong.pages.dev/tools/lengthplan/) to arrange straight stock with kerf, trim and reusable offcuts. The tools are free public previews; verify outputs before relying on them.
 
-Optional consent-based usage measurement is documented in [ANALYTICS.md](ANALYTICS.md). Collection remains disabled until the real free account and privacy prerequisites are verified.
+Optional usage measurement is configured on the verified Umami Hobby plan and loads only after visitors accept analytics. See [ANALYTICS.md](ANALYTICS.md) for event coverage, privacy controls and measurement limits. Advertising remains disabled.
 
 ## Run locally
 

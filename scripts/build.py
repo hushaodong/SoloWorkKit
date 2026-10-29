@@ -29,9 +29,11 @@ def analytics_config(site_url, override=None):
             raise ValueError('Analytics script must be the reviewed Umami Cloud endpoint')
         if c.get('data_region') not in ('EU','US') or not c.get('operator_name','').strip():
             raise ValueError('Analytics requires verified storage region and operator')
+        if not re.fullmatch(r'[a-z0-9.-]+',c.get('site_hostname','')):
+            raise ValueError('Analytics requires the reviewed website hostname')
         if not re.fullmatch(r'[^\s<>@]+@[^\s<>@]+\.[^\s<>@]+', c.get('privacy_contact','')):
             raise ValueError('Analytics requires a public privacy contact')
-    return {**c, 'configured': enabled, 'enabled': enabled and bool(site_url),
+    return {**c, 'configured': enabled, 'enabled': enabled and bool(site_url) and urlparse(site_url).hostname==c.get('site_hostname'),
             'hostname': urlparse(site_url).hostname if site_url else ''}
 
 

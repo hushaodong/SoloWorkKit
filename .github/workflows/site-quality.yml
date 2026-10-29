@@ -23,7 +23,7 @@ jobs:
           python scripts/test_analytics.py
           node scripts/test_analytics.cjs
       - name: Build safe preview
-        run: python scripts/build.py
+        run: python scripts/build.py --site-url https://soloworkkit-hushaodong.pages.dev
       - name: Validate SEO and index controls
         run: python scripts/qa.py
       - name: Validate browser scripts

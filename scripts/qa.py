@@ -11,6 +11,7 @@ meta=json.loads((DIST/'build-report.json').read_text())
 errors=[]
 publisher=meta.get('adsense_verification_publisher')
 ad_pages=[]
+analytics_pages=[]
 def check(condition,msg):
     if not condition:errors.append(msg)
 for f in DIST.rglob('index.html'):
@@ -38,6 +39,15 @@ for f in DIST.rglob('index.html'):
     else:
         check('noindex' in str(soup.find('meta',attrs={'name':'robots'})),p+': draft inadvertently indexable')
     verification=soup.find_all('meta',attrs={'name':'google-adsense-account'})
+    analytics=soup.find_all('script',id='wl-analytics-config')
+    check(len(analytics)==(1 if meta.get('analytics_enabled') else 0),p+': analytics configuration mismatch')
+    loaders=soup.find_all('script',src='/assets/usage-analytics.js')
+    check(len(loaders)==(1 if meta.get('analytics_enabled') else 0),p+': consent controller count mismatch')
+    if analytics:
+        analytics_pages.append(p)
+        settings=json.loads(analytics[0].get_text())
+        check(settings['hostname']==urlparse(meta['site_url']).hostname and settings['path']==p,p+': analytics path or host mismatch')
+        check(not soup.find('script',src='https://cloud.umami.is/script.js'),p+': third-party tracker bypasses consent controller')
     check(len(verification)==(1 if publisher else 0),p+': verification tag count mismatch')
     if publisher:
         check(all(v.get('content')==publisher and v.parent.name=='head' for v in verification),p+': verification publisher mismatch')
@@ -58,6 +68,8 @@ if not_found.is_file():
     check(not missing.find_all('script'),'404 page must not load advertising or interactive scripts')
 ET.parse(DIST/'sitemap.xml')
 check(bool(ad_pages)==meta['ads_enabled'],'Ad serving report does not match emitted scripts')
+check(bool(analytics_pages)==meta.get('analytics_enabled',False),'Analytics report does not match emitted controller')
+check((DIST/'assets/usage-analytics.js').exists()==meta.get('analytics_enabled',False),'Analytics asset activation mismatch')
 check((DIST/'ads.txt').exists() == meta.get('ads_txt_enabled',False),'ads.txt activation mismatch')
 if publisher:
     check((DIST/'ads.txt').read_text()==f'google.com, {publisher.removeprefix("ca-")}, DIRECT, f08c47fec0942fa0\n','ads.txt publisher mismatch')
