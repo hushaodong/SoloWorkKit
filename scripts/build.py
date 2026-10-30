@@ -195,6 +195,8 @@ def build(production=False, site_url='', adsense='', ads_approved=False, privacy
     for t in cfg['tools']:
         dest=DIST/'tools'/t['slug'];dest.mkdir(parents=True,exist_ok=True)
         base=(ROOT/'apps'/t['slug']/'index.html').read_text(encoding='utf-8')
+        # Original one-level app logos must point to the site root after nesting under /tools/<slug>/.
+        base=base.replace('<a href="../index.html" class="logo">', '<a href="/" class="logo">')
         published=production and t.get('approved_for_index',False) and t.get('evidence_reviewed',False) and t.get('qa_verified',False)
         canonical=url_path(site_url,f'/tools/{t["slug"]}/')
         meta=head_base(t['headline'],t['description'],canonical,'index,follow' if published else 'noindex,follow',adsense if published else '',publisher)

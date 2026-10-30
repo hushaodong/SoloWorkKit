@@ -3,7 +3,7 @@
 import json,re,sys,xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.robotparser import RobotFileParser
-from urllib.parse import urlparse,parse_qs
+from urllib.parse import urlparse,parse_qs,urljoin,unquote
 from bs4 import BeautifulSoup
 ROOT=Path(__file__).resolve().parents[1]
 DIST=ROOT/'dist'
@@ -25,6 +25,16 @@ for f in DIST.rglob('index.html'):
         canonical=soup.find('link',rel='canonical')
         check(bool(canonical) and canonical.get('href')==meta['site_url']+p,p+': canonical does not match site URL')
     check(bool(soup.find('h1')),p+': missing h1')
+    # Validate generated, same-site navigation against the files that will be published.
+    origin=meta['site_url'] or 'https://example.invalid'
+    for link in soup.select('a[href]'):
+        target=urlparse(urljoin(origin+p,link['href']))
+        if target.scheme not in ('http','https') or target.netloc!=urlparse(origin).netloc:
+            continue
+        destination=(DIST/unquote(target.path).lstrip('/')).resolve()
+        if destination.is_dir():destination=destination/'index.html'
+        check(destination.is_relative_to(DIST.resolve()) and destination.is_file(),
+              p+': broken internal link '+link['href'])
     if p.startswith('/tools/'):
         check(bool(soup.select('.wl-guide h2')),p+': missing static usage guide')
         check(bool(soup.select('.wl-header')),p+': missing shared navigation')
