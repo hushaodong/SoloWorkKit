@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build Worklane Tools into dist/; safe preview defaults to noindex and no advertising."""
+"""Build SoloWorkKit into dist/; safe preview defaults to noindex and no advertising."""
 import argparse, datetime, html, json, os, re, shutil
 from pathlib import Path
 from urllib.parse import urlparse
@@ -110,7 +110,7 @@ def guide(tool, siblings):
 
 
 def home_html(catalog, site_url, prod, ads, verification_publisher=''):
-    brand = catalog['brand']; title = 'Worklane Tools | Free Browser Tools for Independent Professionals'
+    brand = catalog['brand']; title = f'{brand} | Free Browser Tools for Independent Professionals'
     # Search Console verification is emitted only for the verified website origin.
     search_console = ('<meta name="google-site-verification" content="qoPQ-a6HOozcdyORlQ0FS6jBi3qim1m95tmBo5zVzzY">'
         if site_url == 'https://soloworkkit-hushaodong.pages.dev' else '')
@@ -206,7 +206,7 @@ def build(production=False, site_url='', adsense='', ads_approved=False, privacy
         (dest/'index.html').write_text(base,encoding='utf-8')
         if published: sitemap.append(f'/tools/{t["slug"]}/')
     about=[
-        'Worklane Tools is a small collection of focused web utilities for independent professionals, including contractors, landlords, photographers and freelancers.',
+        f'{h(cfg["brand"])} is a small collection of focused web utilities for independent professionals, including contractors, landlords, photographers and freelancers.',
         'Our approach: make the free core workflow functional without requiring an account. Tools are intentionally lightweight rather than full business management services.',
         'Important: This project is an early-stage prototype collection. Some ideas and paid features are still research hypotheses. The tools are not professional legal, tax or accounting advice.',
         'We do not claim to offer cloud backups. If you use a tool to create important records, export them and keep independent copies.'

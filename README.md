@@ -1,4 +1,4 @@
-# Worklane Tools — US utility-tool matrix (deployment starter)
+# SoloWorkKit — US utility-tool matrix (deployment starter)
 
 A responsive English-language directory of 36 browser tools, with a static site generator, indexation controls, sitemap and robots generation, AdSense verification and activation guards, duplicate-intake registry, and GitHub Actions quality checks.
 
