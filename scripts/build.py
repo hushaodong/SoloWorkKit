@@ -180,11 +180,16 @@ def build(production=False, site_url='', adsense='', ads_approved=False, privacy
     slugs=[t['slug'] for t in cfg['tools']]
     if len(set(slugs))!=len(slugs) or not all(re.fullmatch(r'[a-z][a-z0-9-]+',s) for s in slugs):
         raise ValueError('Invalid/duplicate slugs')
+    approved_count=sum(bool(t.get('approved_for_index') and t.get('evidence_reviewed') and t.get('qa_verified')) for t in cfg['tools'])
+    homepage_review=cfg.get('homepage_review') or {}
+    if not isinstance(homepage_review,dict):
+        raise ValueError('homepage_review must be an object')
+    # The directory and each tool require separate evidence; approving a tool must not approve the homepage.
+    homepage_indexable=bool(production and approved_count>0 and all(
+        homepage_review.get(key) is True for key in ('approved_for_index','evidence_reviewed','qa_verified')))
+    ads_enabled=bool(adsense and homepage_indexable)
     if DIST.exists(): shutil.rmtree(DIST)
     DIST.mkdir(parents=True)
-    approved_count=sum(bool(t.get('approved_for_index') and t.get('evidence_reviewed') and t.get('qa_verified')) for t in cfg['tools'])
-    homepage_indexable=production and approved_count>0
-    ads_enabled=bool(adsense and homepage_indexable)
     (DIST/'index.html').write_text(home_html(cfg,site_url,homepage_indexable,adsense if homepage_indexable else '',publisher),encoding='utf-8')
     # A root 404.html prevents Pages from serving the homepage with HTTP 200
     # for every unknown route under its default single-page-app fallback.
@@ -199,7 +204,7 @@ def build(production=False, site_url='', adsense='', ads_approved=False, privacy
         base=base.replace('<a href="../index.html" class="logo">', '<a href="/" class="logo">')
         published=production and t.get('approved_for_index',False) and t.get('evidence_reviewed',False) and t.get('qa_verified',False)
         canonical=url_path(site_url,f'/tools/{t["slug"]}/')
-        meta=head_base(t['headline'],t['description'],canonical,'index,follow' if published else 'noindex,follow',adsense if published else '',publisher)
+        meta=head_base(t['headline'],t['description'],canonical,'index,follow' if published else 'noindex,follow',adsense if published and ads_enabled else '',publisher)
         base=base.replace('</head>', '\n'+meta+css()+'</head>',1)
         base=base.replace('<body>','<body>'+frame_header(cfg['brand']),1)
         # Attach genuine, static instructions and disclosure; do not replace the tool functionality.

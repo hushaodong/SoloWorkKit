@@ -25,4 +25,6 @@ SITE_URL=https://your-real-owned-domain.com python3 scripts/build.py --productio
 
 Publish the `dist` folder through Cloudflare Pages (build command `python3 scripts/build.py --production`) or Vercel (see `vercel.json`). Do not use sample domains or activate ads before review. Draft tools stay `noindex` and out of the production sitemap; change `content/catalog.json` only after independent editorial and functional approval.
 
+Homepage indexing is reviewed separately: all three `homepage_review` flags must be true, and at least one tool must independently pass its review flags. Approving a tool alone does not make the homepage indexable. All pages remain `noindex` in preview mode.
+
 For detailed deployment, Search Console, AdSense and research workflows, see [`README_部署与增长运营.md`](README_%E9%83%A8%E7%BD%B2%E4%B8%8E%E5%A2%9E%E9%95%BF%E8%BF%90%E8%90%A5.md).

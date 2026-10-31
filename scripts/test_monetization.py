@@ -26,10 +26,14 @@ class MonetizationBuildTests(unittest.TestCase):
         for tool in self.catalog['tools']:
             tool.update(approved_for_index=False,evidence_reviewed=False,qa_verified=False)
         self.catalog['tools'][0].update(approved_for_index=True,evidence_reviewed=True,qa_verified=True)
-        catalog_path=Path(self.tmp.name)/'catalog.json'
-        catalog_path.write_text(json.dumps(self.catalog))
-        self.patches=[patch.object(build,'DIST',self.out),patch.object(build,'CATALOG',catalog_path)]
+        self.catalog['homepage_review']={'approved_for_index':True,'evidence_reviewed':True,'qa_verified':True}
+        self.catalog_path=Path(self.tmp.name)/'catalog.json'
+        self.save_catalog()
+        self.patches=[patch.object(build,'DIST',self.out),patch.object(build,'CATALOG',self.catalog_path)]
         for p in self.patches:p.start()
+
+    def save_catalog(self):
+        self.catalog_path.write_text(json.dumps(self.catalog))
 
     def tearDown(self):
         for p in reversed(self.patches):p.stop()
@@ -69,6 +73,46 @@ class MonetizationBuildTests(unittest.TestCase):
             with self.subTest(production=production,approved=approved,privacy=privacy):
                 with self.assertRaises(ValueError):
                     self.render(production=production,adsense=PUBLISHER,ads_approved=approved,privacy_ready=privacy,verification_publisher=PUBLISHER)
+
+    def test_tool_approval_does_not_approve_homepage(self):
+        self.catalog['homepage_review']={'approved_for_index':False,'evidence_reviewed':True,'qa_verified':True}
+        self.save_catalog()
+        report=self.render(production=True,verification_publisher=PUBLISHER)
+        slug=self.catalog['tools'][0]['slug']
+        self.assertEqual(report['indexable_paths'],[f'/tools/{slug}/'])
+        home=BeautifulSoup((self.out/'index.html').read_text(),'html.parser')
+        tool=BeautifulSoup((self.out/'tools'/slug/'index.html').read_text(),'html.parser')
+        self.assertIn('noindex',home.find('meta',attrs={'name':'robots'})['content'])
+        self.assertNotIn('noindex',tool.find('meta',attrs={'name':'robots'})['content'])
+        sitemap=(self.out/'sitemap.xml').read_text()
+        self.assertIn(f'{ORIGIN}/tools/{slug}/',sitemap)
+        self.assertNotIn(f'<loc>{ORIGIN}/</loc>',sitemap)
+
+    def test_homepage_requires_each_explicit_boolean_review(self):
+        for key in ('approved_for_index','evidence_reviewed','qa_verified'):
+            for value in (False,None,'true'):
+                with self.subTest(key=key,value=value):
+                    self.catalog['homepage_review']={'approved_for_index':True,'evidence_reviewed':True,'qa_verified':True}
+                    self.catalog['homepage_review'][key]=value
+                    self.save_catalog()
+                    report=self.render(production=True,verification_publisher=PUBLISHER)
+                    self.assertNotIn('/',report['indexable_paths'])
+                    self.assertIn('noindex',BeautifulSoup((self.out/'index.html').read_text(),'html.parser').find('meta',attrs={'name':'robots'})['content'])
+
+    def test_reviewed_homepage_requires_an_approved_tool(self):
+        self.catalog['tools'][0]['approved_for_index']=False
+        self.save_catalog()
+        report=self.render(production=True,verification_publisher=PUBLISHER)
+        self.assertEqual(report['indexable_paths'],[])
+        self.assertIn('noindex',BeautifulSoup((self.out/'index.html').read_text(),'html.parser').find('meta',attrs={'name':'robots'})['content'])
+
+    def test_unreviewed_homepage_keeps_all_ad_loaders_off(self):
+        self.catalog['homepage_review']['approved_for_index']=False
+        self.save_catalog()
+        report=self.render(production=True,adsense=PUBLISHER,ads_approved=True,privacy_ready=True,verification_publisher=PUBLISHER)
+        self.assertFalse(report['ads_enabled'])
+        for page in self.out.rglob('index.html'):
+            self.assertFalse(BeautifulSoup(page.read_text(),'html.parser').select('script[src*="googlesyndication"]'))
 
     def test_approved_ads_do_not_leak_into_draft_or_legal_pages(self):
         report=self.render(production=True,adsense=PUBLISHER,ads_approved=True,privacy_ready=True,verification_publisher=PUBLISHER)

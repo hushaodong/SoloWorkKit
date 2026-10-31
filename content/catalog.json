@@ -3,6 +3,11 @@
   "tagline": "Free, focused tools for independent professionals",
   "site_url": "",
   "description": "Practical browser-based tools for independent contractors, landlords, photographers, and freelancers. No account required for the free core tools.",
+  "homepage_review": {
+    "approved_for_index": false,
+    "evidence_reviewed": false,
+    "qa_verified": false
+  },
   "tools": [
     {
       "slug": "punchlite",
