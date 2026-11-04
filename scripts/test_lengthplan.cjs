@@ -27,3 +27,6 @@ settings=Object.fromEntries(P.settingsRows(r,'mm'));assert.equal(settings['Stock
 const report=P.csvRows(r,'in'),totals=Object.fromEntries(report.filter(row=>row.length===2));assert.equal(totals['End trim'],'1 in');assert.equal(totals['Offcuts'],'22.25 in');assert.equal(totals['User-entered price per stock'],'24.5');assert.equal(report.filter(row=>row.length===6&&typeof row[0]==='number').length,6);
 r.price=0;assert.equal(Object.fromEntries(P.settingsRows(r,'in'))['Quoted stock cost'],'Not entered');
 console.log('PASS: fractions, input/kerf/trim boundaries, 150 independent oracle comparisons, 500-piece conservation, CSV safety and complete report settings/costs in both units.');
+
+for(const label of ['=1+1','  +SUM(1,1)','＠cmd','－1','\tlabel']) assert(P.csvUnsafeLabel(label),`unsafe label: ${label}`);
+for(const label of ['Leg','saw, 2','30-inch rail',"O'Brien"]) assert(!P.csvUnsafeLabel(label),`safe label: ${label}`);
